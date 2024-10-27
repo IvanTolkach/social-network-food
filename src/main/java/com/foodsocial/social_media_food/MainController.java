@@ -2,9 +2,13 @@ package com.foodsocial.social_media_food;
 
 import com.foodsocial.social_media_food.accessingdatasql.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 import java.util.regex.Pattern;
 
 import com.foodsocial.social_media_food.repos.UserRepository;
@@ -19,6 +23,9 @@ public class MainController {
     private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
     private static final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
 
+    private static final String USERNAME_REGEX = "^(?!-)[A-Za-z0-9-]+(?<!-)$";
+    private static final Pattern USERNAME_PATTERN = Pattern.compile(USERNAME_REGEX);
+
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @PostMapping(path="/register")
@@ -29,12 +36,41 @@ public class MainController {
             return "Invalid email format";
         }
 
+        if (!USERNAME_PATTERN.matcher(name).matches()) {
+            return "Invalid username format. Username may only contain alphanumeric characters or single " +
+                    "hyphens, and cannot begin or end with a hyphen.";
+        }
+
         User n = new User();
         n.setUsername(name);
         n.setEmail(email);
+        //TODO сделать проверку на ввод сложного пароля
         n.setPassword(passwordEncoder.encode(password));
         userRepository.save(n);
         return "User registered successfully";
+    }
+
+    @PostMapping(path = "/login")
+    public @ResponseBody ResponseEntity<String> loginUser(@RequestParam String identifier,
+                                                          @RequestParam String password) {
+        // Проверка на email-формат для определения, искать ли пользователя по email или логину
+        boolean isEmail = EMAIL_PATTERN.matcher(identifier).matches();
+        Optional<User> userOpt = isEmail
+                ? userRepository.findByEmail(identifier)
+                : userRepository.findByUsername(identifier);
+
+        if (userOpt.isPresent()) {
+            User user = userOpt.get();
+
+            // Сравниваем захешированный пароль
+            if (passwordEncoder.matches(password, user.getPassword())) {
+                return ResponseEntity.ok("Login successful");
+            } else {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect password");
+            }
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+        }
     }
 
     @GetMapping(path="/all")

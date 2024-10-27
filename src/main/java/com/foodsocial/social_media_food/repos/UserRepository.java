@@ -11,4 +11,7 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 
     // Метод для поиска пользователя по username
     Optional<User> findByUsername(String username);
+
+    // Метод поиска польователя по почте или имени (для реализации входа в аккаунт)
+    Optional<User> findByUsernameOrEmail(String username, String email);
 }

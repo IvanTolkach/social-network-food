@@ -19,7 +19,8 @@ public class SecurityConfig {
                 .csrf(CsrfConfigurer::disable) // Отключение CSRF с использованием CsrfConfigurer
                 .authorizeRequests(auth -> auth
                         .requestMatchers("/demo/register").permitAll() // Разрешение доступа к /api/register без авторизации
-                        .requestMatchers("/demo/all").permitAll() // Разрешение доступа к /api/register без авторизации
+                        .requestMatchers("/demo/login").permitAll() // Разрешение доступа к /api/login без авторизации
+                        .requestMatchers("/demo/all").permitAll() // Разрешение доступа к /api/all без авторизации
                         .anyRequest().authenticated() // Все остальные запросы требуют авторизации
                 );
 
