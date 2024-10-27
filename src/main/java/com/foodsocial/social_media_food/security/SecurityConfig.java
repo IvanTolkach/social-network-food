@@ -1,4 +1,4 @@
-package com.foodsocial.social_media_food;
+package com.foodsocial.social_media_food.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
