@@ -5,6 +5,8 @@ import com.foodsocial.social_media_food.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -51,9 +53,26 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
-    // TODO
     @Override
-    public User loginUser(String username, String email, String password) {
-        return null;
+    public User loginUser(String identifier, String password) {
+        // Определим, является ли идентификатор почтой
+        boolean isEmail = validationService.validateEmail(identifier);
+
+        Optional<User> userOpt = isEmail
+                ? userRepository.findByEmail(identifier)
+                : userRepository.findByUsername(identifier);
+
+        if (userOpt.isPresent()) {
+            User user = userOpt.get();
+
+            // Сравнение введенного пароля с сохраненным захешированным паролем
+            if (passwordService.matches(password, user.getPassword())) {
+                return user; // Возвращаем пользователя, если пароль корректен
+            } else {
+                throw new RuntimeException("Incorrect password");
+            }
+        } else {
+            throw new RuntimeException("User not found");
+        }
     }
 }
