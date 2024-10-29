@@ -9,5 +9,4 @@ public class SocialMediaFoodApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SocialMediaFoodApplication.class, args);
 	}
-
 }

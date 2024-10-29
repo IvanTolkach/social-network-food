@@ -1,8 +1,9 @@
-package com.foodsocial.social_media_food;
+package com.foodsocial.social_media_food.controller;
 
 import com.foodsocial.social_media_food.service.UserService;
 import com.foodsocial.social_media_food.accessingdatasql.User;
 import com.foodsocial.social_media_food.repos.UserRepository;
+import com.foodsocial.social_media_food.requests.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,13 +22,13 @@ public class MainController {
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @PostMapping(path="/register")
-    public @ResponseBody ResponseEntity<String> registerUser(@RequestParam String username,
-                                                             @RequestParam String email,
-                                                             @RequestParam String password  ) {
+    public @ResponseBody ResponseEntity<String> registerUser(@RequestBody SignupRequest signupRequest  ) {
 
         try {
             // Регистрация пользователя
-            userService.registerUser(username, email, password);
+            userService.registerUser(signupRequest.getUsername(),
+                                     signupRequest.getEmail(),
+                                     signupRequest.getPassword());
             return ResponseEntity.ok("User registered successfully");
         } catch (RuntimeException e) {
             // Возврат ошибки, если регистрация не удалась
@@ -36,11 +37,10 @@ public class MainController {
     }
 
     @PostMapping(path = "/login")
-    public @ResponseBody ResponseEntity<String> loginUser(@RequestParam String identifier,
-                                                          @RequestParam String password     ) {
+    public @ResponseBody ResponseEntity<String> loginUser(@RequestBody LoginRequest loginRequest) {
 
         try {
-            User user = userService.loginUser(identifier, password);
+            User user = userService.loginUser(loginRequest.getIdentifier(), loginRequest.getPassword());
             return ResponseEntity.ok("Login successful");
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
