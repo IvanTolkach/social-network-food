@@ -1,55 +1,35 @@
 package com.foodsocial.social_media_food.controller;
 
-import com.foodsocial.social_media_food.service.UserService;
 import com.foodsocial.social_media_food.accessingdatasql.User;
 import com.foodsocial.social_media_food.repos.UserRepository;
-import com.foodsocial.social_media_food.requests.*;
+import com.foodsocial.social_media_food.security.UnauthorizedException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller // This means that this class is a Controller
 @RequestMapping(path="/demo")
 public class MainController {
+
     @Autowired // This means to get the bean called userRepository
     private UserRepository userRepository;
-    @Autowired
-    private UserService userService;
 
-    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
-    @PostMapping(path="/register")
-    public @ResponseBody ResponseEntity<String> registerUser(@RequestBody SignupRequest signupRequest  ) {
-
-        try {
-            // Регистрация пользователя
-            userService.registerUser(signupRequest.getUsername(),
-                                     signupRequest.getEmail(),
-                                     signupRequest.getPassword());
-            return ResponseEntity.ok("User registered successfully");
-        } catch (RuntimeException e) {
-            // Возврат ошибки, если регистрация не удалась
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-    }
-
-    @PostMapping(path = "/login")
-    public @ResponseBody ResponseEntity<String> loginUser(@RequestBody LoginRequest loginRequest) {
-
-        try {
-            User user = userService.loginUser(loginRequest.getIdentifier(), loginRequest.getPassword());
-            return ResponseEntity.ok("Login successful");
-        } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
-        }
-    }
-
-    @GetMapping(path="/all")
+    @GetMapping("/all")
     public @ResponseBody Iterable<User> getAllUsers() {
-        // This returns a JSON or XML with the users
-        return userRepository.findAll();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null && auth.isAuthenticated()) {
+            return userRepository.findAll();
+        } else {
+            throw new UnauthorizedException("Unauthorized request");
+        }
     }
+
+    @GetMapping("/greeting")
+    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+        model.addAttribute("name", name);
+        return "greeting";
+        }
 }
