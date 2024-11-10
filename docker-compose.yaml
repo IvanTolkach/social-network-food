@@ -1,0 +1,22 @@
+services:
+  social-food_DB:
+    image: postgres:latest
+    container_name: social-food_DB
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: social-food
+    ports:
+      - "5432:5432"
+
+  spring-service:
+    container_name: spring-service
+    hostname: spring-service
+    build:
+      context: .
+
+    depends_on:
+      - social-food_DB
+
+    ports:
+      - "8080:8080"
