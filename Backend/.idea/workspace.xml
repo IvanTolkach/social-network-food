@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9345f65f-540c-4c30-b08f-1704cf1b29a5" name="Changes" comment="change .jar files">
+      <change afterPath="$PROJECT_DIR$/../.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/SocialMediaFoodApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/SocialMediaFoodApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/accessingdatasql/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/accessingdatasql/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/configuration/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/configuration/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/repos/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/repos/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/requests/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/requests/LoginRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/requests/SignupRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/requests/SignupRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/security/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/security/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/security/RestResponseEntityExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/security/RestResponseEntityExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/security/UnauthorizedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/security/UnauthorizedException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/service/PasswordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/service/PasswordService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/service/ValidationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/service/ValidationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/service/ValidationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/service/ValidationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/validation/EmailValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/validation/EmailValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/validation/PasswordValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/validation/PasswordValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/validation/UsernameValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/validation/UsernameValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/templates/greeting.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/greeting.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/test/java/com/foodsocial/social_media_food/SocialMediaFoodApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/foodsocial/social_media_food/SocialMediaFoodApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/SocialMediaFoodApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/SocialMediaFoodApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/accessingdatasql/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/accessingdatasql/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/configuration/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/configuration/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/controller/AuthController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/controller/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/repos/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/repos/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/requests/LoginRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/requests/LoginRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/requests/SignupRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/requests/SignupRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/security/GlobalExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/security/GlobalExceptionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/security/RestResponseEntityExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/security/RestResponseEntityExceptionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/security/UnauthorizedException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/security/UnauthorizedException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/service/PasswordService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/service/PasswordService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/service/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/service/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/service/ValidationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/service/ValidationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/service/ValidationServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/service/ValidationServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/validation/EmailValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/validation/EmailValidator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/validation/PasswordValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/validation/PasswordValidator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/validation/UsernameValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/validation/UsernameValidator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/templates/greeting.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/greeting.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/social-media-food-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/social-media-food-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/social-media-food-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/social-media-food-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/test-classes/com/foodsocial/social_media_food/SocialMediaFoodApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/foodsocial/social_media_food/SocialMediaFoodApplicationTests.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dockerfile" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2nrRUsgTeyfekRjCP55cr9DwjN8" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.SocialMediaFoodApplication.executor": "Run",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\31rom\Documents\GitHub\social-network-food" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.SocialMediaFoodApplication">
+    <configuration name="SocialMediaFoodApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="social-media-food" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.foodsocial.social_media_food.SocialMediaFoodApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="containerName" value="social-network-food" />
+          <option name="sourceFilePath" value="Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.Dockerfile" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9345f65f-540c-4c30-b08f-1704cf1b29a5" name="Changes" comment="" />
+      <created>1729729231436</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1729729231436</updated>
+      <workItem from="1729729234103" duration="394000" />
+      <workItem from="1730104898309" duration="809000" />
+      <workItem from="1731183990567" duration="605000" />
+      <workItem from="1731184692036" duration="4194000" />
+      <workItem from="1731190205274" duration="441000" />
+      <workItem from="1731190986765" duration="9182000" />
+      <workItem from="1731450795941" duration="3730000" />
+      <workItem from="1731611607722" duration="33000" />
+    </task>
+    <task id="LOCAL-00001" summary="add .gitignore">
+      <option name="closed" value="true" />
+      <created>1729729408738</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1729729408738</updated>
+    </task>
+    <task id="LOCAL-00002" summary="change .gitignore">
+      <option name="closed" value="true" />
+      <created>1729729454003</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1729729454003</updated>
+    </task>
+    <task id="LOCAL-00003" summary="change .gitignore">
+      <option name="closed" value="true" />
+      <created>1729729505978</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1729729505978</updated>
+    </task>
+    <task id="LOCAL-00004" summary="change .gitignore">
+      <option name="closed" value="true" />
+      <created>1729729543461</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1729729543461</updated>
+    </task>
+    <task id="LOCAL-00005" summary="ваш блядский докер заработал, с Вани пиво :)">
+      <option name="closed" value="true" />
+      <created>1731235665441</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1731235665441</updated>
+    </task>
+    <task id="LOCAL-00006" summary="change .gitignore file">
+      <option name="closed" value="true" />
+      <created>1731452449307</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1731452449307</updated>
+    </task>
+    <task id="LOCAL-00007" summary="add .jar and other files">
+      <option name="closed" value="true" />
+      <created>1731452466976</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1731452466976</updated>
+    </task>
+    <task id="LOCAL-00008" summary="change .jar files">
+      <option name="closed" value="true" />
+      <created>1731453951408</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1731453951408</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="add .gitignore" />
+    <MESSAGE value="change .gitignore" />
+    <MESSAGE value="ваш блядский докер заработал, с Вани пиво :)" />
+    <MESSAGE value="change .gitignore file" />
+    <MESSAGE value="add .jar and other files" />
+    <MESSAGE value="change .jar files" />
+    <option name="LAST_COMMIT_MESSAGE" value="change .jar files" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
