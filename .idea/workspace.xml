@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9345f65f-540c-4c30-b08f-1704cf1b29a5" name="Changes" comment="change .jar files">
+    <list default="true" id="9345f65f-540c-4c30-b08f-1704cf1b29a5" name="Changes" comment="change docker-compose.yaml">
+      <change afterPath="$PROJECT_DIR$/Backend17/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend17/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Backend17/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,18 +32,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "IvanTolkach"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;IvanTolkach&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/IvanTolkach/social-network-food.git",
-    "accountId": "17cfb68f-18f1-4e99-b0b2-565460fdc32a"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/IvanTolkach/social-network-food.git&quot;,
+    &quot;accountId&quot;: &quot;17cfb68f-18f1-4e99-b0b2-565460fdc32a&quot;
   }
-}]]></component>
+}</component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -87,17 +92,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\31rom\Documents\GitHub\social-network-food\Backend" />
       <recent name="C:\Users\31rom\Documents\GitHub\social-network-food" />
+      <recent name="C:\Users\31rom\Documents\GitHub\social-network-food\Backend" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
-      <deployment type="dockerfile">
-        <settings />
-      </deployment>
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Docker.Dockerfile">
     <configuration name="SocialMediaFoodApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="social-media-food" />
@@ -115,6 +114,20 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -131,7 +144,9 @@
       <workItem from="1731190205274" duration="441000" />
       <workItem from="1731190986765" duration="9182000" />
       <workItem from="1731450795941" duration="3730000" />
-      <workItem from="1731611434275" duration="201000" />
+      <workItem from="1731611434275" duration="2196000" />
+      <workItem from="1731618774953" duration="40000" />
+      <workItem from="1731619050759" duration="309000" />
     </task>
     <task id="LOCAL-00001" summary="add .gitignore">
       <option name="closed" value="true" />
@@ -197,7 +212,23 @@
       <option name="project" value="LOCAL" />
       <updated>1731453951408</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="change folders">
+      <option name="closed" value="true" />
+      <created>1731611866445</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1731611866445</updated>
+    </task>
+    <task id="LOCAL-00010" summary="change docker-compose.yaml">
+      <option name="closed" value="true" />
+      <created>1731612691116</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1731612691116</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,7 +253,9 @@
     <MESSAGE value="change .gitignore file" />
     <MESSAGE value="add .jar and other files" />
     <MESSAGE value="change .jar files" />
-    <option name="LAST_COMMIT_MESSAGE" value="change .jar files" />
+    <MESSAGE value="change folders" />
+    <MESSAGE value="change docker-compose.yaml" />
+    <option name="LAST_COMMIT_MESSAGE" value="change docker-compose.yaml" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
