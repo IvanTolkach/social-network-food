@@ -4,7 +4,50 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9345f65f-540c-4c30-b08f-1704cf1b29a5" name="Changes" comment="change .jar files" />
+    <list default="true" id="9345f65f-540c-4c30-b08f-1704cf1b29a5" name="Changes" comment="change .jar files">
+      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/accessingdatasql/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/configuration/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/controller/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/controller/MainController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/repos/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/requests/LoginRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/requests/SignupRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/security/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/security/RestResponseEntityExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/security/UnauthorizedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/service/PasswordService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/service/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/service/ValidationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/service/ValidationServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/validation/EmailValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/validation/PasswordValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/validation/UsernameValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/resources/templates/greeting.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/accessingdatasql/User.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/configuration/SecurityConfig.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/controller/AuthController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/controller/MainController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/repos/UserRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/requests/LoginRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/requests/SignupRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/security/GlobalExceptionHandler.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/security/RestResponseEntityExceptionHandler.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/security/UnauthorizedException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/service/PasswordService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/service/UserService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/service/UserServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/service/ValidationService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/service/ValidationServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/validation/EmailValidator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/validation/PasswordValidator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/validation/UsernameValidator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/templates/greeting.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,6 +68,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;IvanTolkach&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/IvanTolkach/social-network-food.git&quot;,
+    &quot;accountId&quot;: &quot;17cfb68f-18f1-4e99-b0b2-565460fdc32a&quot;
+  }
+}</component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -39,6 +94,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -50,40 +108,54 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.SocialMediaFoodApplication.executor": "Run",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Application.SocialMediaFoodApplication.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.SocialMediaFoodApplication.executor&quot;: &quot;Run&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\31rom\Documents\GitHub\social-network-food" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.SocialMediaFoodApplication">
+  <component name="RunManager" selected="Application.SocialMediaFoodApplication">
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="SocialMediaFoodApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.foodsocial.social_media_food.SocialMediaFoodApplication" />
+      <module name="social-media-food" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SocialMediaFoodApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="social-media-food" />
@@ -101,25 +173,9 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
-      <deployment type="dockerfile">
-        <settings />
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Docker.Dockerfile" />
-      </list>
-    </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
-      </set>
-    </attachedChunks>
+    <list>
+      <item itemvalue="Application.SocialMediaFoodApplication" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
