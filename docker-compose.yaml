@@ -13,7 +13,7 @@ services:
     container_name: spring-service
     hostname: spring-service
     build:
-      context: ..
+      context: ./Backend
 
     depends_on:
       - social-food_DB

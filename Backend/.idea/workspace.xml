@@ -4,68 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9345f65f-540c-4c30-b08f-1704cf1b29a5" name="Changes" comment="change .jar files">
-      <change afterPath="$PROJECT_DIR$/../.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/SocialMediaFoodApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/SocialMediaFoodApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/accessingdatasql/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/accessingdatasql/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/configuration/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/configuration/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/repos/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/repos/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/requests/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/requests/LoginRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/requests/SignupRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/requests/SignupRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/security/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/security/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/security/RestResponseEntityExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/security/RestResponseEntityExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/security/UnauthorizedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/security/UnauthorizedException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/service/PasswordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/service/PasswordService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/service/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/service/ValidationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/service/ValidationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/service/ValidationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/service/ValidationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/validation/EmailValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/validation/EmailValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/validation/PasswordValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/validation/PasswordValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/foodsocial/social_media_food/validation/UsernameValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodsocial/social_media_food/validation/UsernameValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/resources/templates/greeting.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/greeting.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/test/java/com/foodsocial/social_media_food/SocialMediaFoodApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/foodsocial/social_media_food/SocialMediaFoodApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/SocialMediaFoodApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/SocialMediaFoodApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/accessingdatasql/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/accessingdatasql/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/configuration/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/configuration/SecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/controller/AuthController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/controller/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/repos/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/repos/UserRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/requests/LoginRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/requests/LoginRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/requests/SignupRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/requests/SignupRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/security/GlobalExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/security/GlobalExceptionHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/security/RestResponseEntityExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/security/RestResponseEntityExceptionHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/security/UnauthorizedException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/security/UnauthorizedException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/service/PasswordService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/service/PasswordService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/service/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/service/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/service/ValidationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/service/ValidationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/service/ValidationServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/service/ValidationServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/validation/EmailValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/validation/EmailValidator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/validation/PasswordValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/validation/PasswordValidator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/com/foodsocial/social_media_food/validation/UsernameValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/foodsocial/social_media_food/validation/UsernameValidator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/templates/greeting.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/greeting.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/social-media-food-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/social-media-food-0.0.1-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/social-media-food-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/social-media-food-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/test-classes/com/foodsocial/social_media_food/SocialMediaFoodApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/foodsocial/social_media_food/SocialMediaFoodApplicationTests.class" afterDir="false" />
-    </list>
+    <list default="true" id="9345f65f-540c-4c30-b08f-1704cf1b29a5" name="Changes" comment="change .jar files" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -197,7 +136,7 @@
       <workItem from="1731190205274" duration="441000" />
       <workItem from="1731190986765" duration="9182000" />
       <workItem from="1731450795941" duration="3730000" />
-      <workItem from="1731611607722" duration="33000" />
+      <workItem from="1731611607722" duration="286000" />
     </task>
     <task id="LOCAL-00001" summary="add .gitignore">
       <option name="closed" value="true" />
