@@ -1,13 +1,17 @@
 package com.foodsocial.social_media_food.service;
 
+import com.foodsocial.social_media_food.accessingdatasql.Cookie;
 import com.foodsocial.social_media_food.accessingdatasql.User;
+import com.foodsocial.social_media_food.repos.CookieRepository;
 import com.foodsocial.social_media_food.repos.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,6 +26,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private PasswordService passwordService;
+
+    @Autowired
+    private CookieRepository cookieRepository;
 
     @Override
     public User registerUser(String username, String email, String password) {
@@ -71,5 +78,18 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), List.of(new SimpleGrantedAuthority("ROLE_USER")));
+    }
+
+    public void addCookie(int userId, String token) {
+        Cookie cookie = new Cookie();
+        cookie.setUserId(userId);
+        cookie.setToken(token);
+        cookie.setExpiration(LocalDateTime.now().plusDays(30));
+        cookieRepository.save(cookie);
+    }
+
+    @Transactional
+    public void deleteCookie(String token) {
+        cookieRepository.deleteByToken(token);
     }
 }

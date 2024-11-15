@@ -4,50 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9345f65f-540c-4c30-b08f-1704cf1b29a5" name="Changes" comment="change .jar files">
-      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/accessingdatasql/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/configuration/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/controller/AuthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/controller/MainController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/repos/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/requests/LoginRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/requests/SignupRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/security/GlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/security/RestResponseEntityExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/security/UnauthorizedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/service/PasswordService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/service/UserServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/service/ValidationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/service/ValidationServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/validation/EmailValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/validation/PasswordValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/java/com/foodsocial/social_media_food/validation/UsernameValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/src/main/resources/templates/greeting.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/accessingdatasql/User.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/configuration/SecurityConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/controller/AuthController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/controller/MainController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/repos/UserRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/requests/LoginRequest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/requests/SignupRequest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/security/GlobalExceptionHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/security/RestResponseEntityExceptionHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/security/UnauthorizedException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/service/PasswordService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/service/UserService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/service/UserServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/service/ValidationService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/service/ValidationServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/validation/EmailValidator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/validation/PasswordValidator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/com/foodsocial/social_media_food/validation/UsernameValidator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend17/target/classes/templates/greeting.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-    </list>
+    <list default="true" id="9345f65f-540c-4c30-b08f-1704cf1b29a5" name="Changes" comment="change .jar files" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
