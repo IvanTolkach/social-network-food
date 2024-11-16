@@ -35,7 +35,7 @@ public class AuthController {
         try {
             System.out.println("user");
             // Регистрация пользователя
-            User registeredUser = userService.registerUser(
+            User user = userService.registerUser(
                     signUpRequest.getUsername(),
                     signUpRequest.getEmail(),
                     signUpRequest.getPassword()
@@ -43,7 +43,7 @@ public class AuthController {
 
             // Генерация уникального токена
             String token = UUID.randomUUID().toString();
-            userService.addCookie(registeredUser.getId(), token);
+            userService.addCookie(user, token);
 
             // Добавление куки
             CookieConfig.addAuthCookie(response, token);
@@ -68,7 +68,7 @@ public class AuthController {
 
             // Генерация уникального токена
             String token = UUID.randomUUID().toString();
-            userService.addCookie(user.getId(), token);
+            userService.addCookie(user, token);
 
             //Добавление куки
             CookieConfig.addAuthCookie(response, token);

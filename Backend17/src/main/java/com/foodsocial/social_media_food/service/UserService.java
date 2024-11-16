@@ -9,7 +9,7 @@ public interface UserService extends UserDetailsService {
 
     User loginUser(String identifier, String password);
 
-    void addCookie(int userId, String token);
+    void addCookie(User user, String token);
 
     void deleteCookie(String token);
 }

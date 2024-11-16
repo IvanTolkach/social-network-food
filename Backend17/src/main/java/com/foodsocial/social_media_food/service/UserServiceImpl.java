@@ -80,9 +80,9 @@ public class UserServiceImpl implements UserService {
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), List.of(new SimpleGrantedAuthority("ROLE_USER")));
     }
 
-    public void addCookie(int userId, String token) {
+    public void addCookie(User user, String token) {
         Cookie cookie = new Cookie();
-        cookie.setUserId(userId);
+        cookie.setUser(user);
         cookie.setToken(token);
         cookie.setExpiration(LocalDateTime.now().plusDays(30));
         cookieRepository.save(cookie);

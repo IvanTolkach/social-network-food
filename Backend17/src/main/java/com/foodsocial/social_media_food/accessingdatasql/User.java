@@ -1,14 +1,13 @@
 package com.foodsocial.social_media_food.accessingdatasql;
 
 import jakarta.persistence.*;
-
 import java.util.Set;
 
 @Entity
 @Table(name = "app_user")
 public class User {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Column(nullable = false, unique = true)
@@ -55,7 +54,11 @@ public class User {
         this.password = password;
     }
 
-    public Set<Cookie> getCookies() { return cookies; }
+    public Set<Cookie> getCookies() {
+        return cookies;
+    }
 
-    public void setCookies(Set<Cookie> cookies) { this.cookies = cookies; }
+    public void setCookies(Set<Cookie> cookies) {
+        this.cookies = cookies;
+    }
 }
