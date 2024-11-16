@@ -2,18 +2,26 @@ package com.foodsocial.social_media_food.accessingdatasql;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "app_user")
 public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
+
     @Column(nullable = false, unique = true)
     private String username;
+
     @Column(nullable = false, unique = true)
     private String email;
+
     @Column(nullable = false)
     private String password;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Cookie> cookies;
 
     public Integer getId() {
         return id;
@@ -46,4 +54,8 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public Set<Cookie> getCookies() { return cookies; }
+
+    public void setCookies(Set<Cookie> cookies) { this.cookies = cookies; }
 }
