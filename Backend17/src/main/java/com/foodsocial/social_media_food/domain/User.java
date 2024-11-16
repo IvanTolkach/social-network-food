@@ -1,4 +1,4 @@
-package com.foodsocial.social_media_food.accessingdatasql;
+package com.foodsocial.social_media_food.domain;
 
 import jakarta.persistence.*;
 import java.util.Set;
@@ -21,6 +21,10 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Cookie> cookies;
+
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING) private Set<Role> roles;
 
     public Integer getId() {
         return id;
@@ -60,5 +64,13 @@ public class User {
 
     public void setCookies(Set<Cookie> cookies) {
         this.cookies = cookies;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }

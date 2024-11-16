@@ -1,6 +1,6 @@
 package com.foodsocial.social_media_food.service;
 
-import com.foodsocial.social_media_food.accessingdatasql.User;
+import com.foodsocial.social_media_food.domain.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 public interface UserService extends UserDetailsService {

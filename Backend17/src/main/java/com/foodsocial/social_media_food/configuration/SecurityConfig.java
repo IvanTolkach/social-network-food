@@ -17,10 +17,20 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeRequests(auth -> {
-                    auth.requestMatchers("/demo/register", "/demo/login", "/demo/all", "/demo/logout",
-                            "/demo/current").permitAll();
+                    auth.requestMatchers("/demo/register", "/demo/login", "/demo/all",
+                            "/demo/logout", "/demo/current").permitAll();
+                    auth.requestMatchers("/admin/**").hasRole("ADMIN");
+                    auth.requestMatchers("/user/**").hasAnyRole("USER", "ADMIN");
                     auth.anyRequest().authenticated();
-                });
+                })
+                .formLogin(form -> form
+                        .loginPage("/login")
+                        .permitAll()
+                )
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .permitAll()
+                );
         return http.build();
     }
 
@@ -29,4 +39,3 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 }
-

@@ -1,6 +1,6 @@
 package com.foodsocial.social_media_food.controller;
 
-import com.foodsocial.social_media_food.accessingdatasql.User;
+import com.foodsocial.social_media_food.domain.User;
 import com.foodsocial.social_media_food.repos.UserRepository;
 import com.foodsocial.social_media_food.security.UnauthorizedException;
 import org.springframework.beans.factory.annotation.Autowired;

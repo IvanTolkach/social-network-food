@@ -1,6 +1,6 @@
 package com.foodsocial.social_media_food.controller;
 
-import com.foodsocial.social_media_food.accessingdatasql.User;
+import com.foodsocial.social_media_food.domain.User;
 import com.foodsocial.social_media_food.configuration.CookieConfig;
 import com.foodsocial.social_media_food.requests.LoginRequest;
 import com.foodsocial.social_media_food.requests.SignupRequest;
@@ -63,7 +63,7 @@ public class AuthController {
             Authentication auth = new UsernamePasswordAuthenticationToken(
                     user,
                     loginRequest.getPassword(),
-                    List.of(new SimpleGrantedAuthority("ROLE_USER"))
+                    List.of(new SimpleGrantedAuthority("USER"))
             );
 
             // Генерация уникального токена

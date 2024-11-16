@@ -1,4 +1,4 @@
-package com.foodsocial.social_media_food.accessingdatasql;
+package com.foodsocial.social_media_food.domain;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
@@ -18,8 +18,6 @@ public class Cookie {
 
     @Column(nullable = false)
     private LocalDateTime expiration;
-
-    // геттеры и сеттеры
 
     public Long getId() {
         return id;

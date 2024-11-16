@@ -1,6 +1,6 @@
 package com.foodsocial.social_media_food.repos;
 
-import com.foodsocial.social_media_food.accessingdatasql.User;
+import com.foodsocial.social_media_food.domain.User;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

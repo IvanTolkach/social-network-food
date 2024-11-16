@@ -1,7 +1,8 @@
 package com.foodsocial.social_media_food.service;
 
-import com.foodsocial.social_media_food.accessingdatasql.Cookie;
-import com.foodsocial.social_media_food.accessingdatasql.User;
+import com.foodsocial.social_media_food.domain.Cookie;
+import com.foodsocial.social_media_food.domain.User;
+import com.foodsocial.social_media_food.domain.Role;
 import com.foodsocial.social_media_food.repos.CookieRepository;
 import com.foodsocial.social_media_food.repos.UserRepository;
 import jakarta.transaction.Transactional;
@@ -12,6 +13,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,6 +54,8 @@ public class UserServiceImpl implements UserService {
         user.setUsername(username);
         user.setEmail(email);
         user.setPassword(passwordService.hashPassword(password));
+        user.setRoles(Collections.singleton(Role.USER));
+
         return userRepository.save(user);
     }
 
@@ -77,6 +81,12 @@ public class UserServiceImpl implements UserService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
+        // Преобразование Set<Role> в List<GrantedAuthority>
+        List<SimpleGrantedAuthority> authorities = user.getRoles().stream()
+                .map(role -> new SimpleGrantedAuthority("ROLE_" + role.name()))
+                .toList();
+
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), List.of(new SimpleGrantedAuthority("ROLE_USER")));
     }
 
