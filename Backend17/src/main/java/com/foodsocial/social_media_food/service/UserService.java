@@ -12,4 +12,6 @@ public interface UserService extends UserDetailsService {
     void addCookie(User user, String token);
 
     void deleteCookie(String token);
+
+    User getUserByToken(String token);
 }

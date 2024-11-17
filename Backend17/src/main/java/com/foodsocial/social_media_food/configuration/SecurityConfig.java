@@ -22,18 +22,18 @@ public class SecurityConfig {
                             "/logout", "/current").permitAll();
                     auth.requestMatchers("/posts").permitAll();
                     auth.requestMatchers("/posts/{id}").permitAll();
-                    auth.requestMatchers("/posts/create", "/posts/update/**", "/posts/delete/**", "/posts/our_posts").authenticated(); // Ограничить доступ для создания, обновления и удаления постов только авторизованным пользователям
+                    // TODO Ограничить доступ для создания, обновления и удаления постов только авторизованным пользователям
+                    auth.requestMatchers("/posts/create", "/posts/update/**", "/posts/delete/**", "/posts/our_posts").permitAll();
                     auth.requestMatchers("/admin/**").hasRole("ADMIN");
                     auth.requestMatchers("/user/**").hasAnyRole("USER", "ADMIN");
                     auth.anyRequest().authenticated();
-                })
-
-                // Аутентификация через GOOGLE
-                .oauth2Login(oauth2 -> oauth2
-                        .userInfoEndpoint(userInfo -> userInfo
-                                .userService(new DefaultOAuth2UserService())
-                        )
-                );
+                });
+        // Вход через GOOGLE
+//                .oauth2Login(oauth2 -> oauth2
+//                        .userInfoEndpoint(userInfo -> userInfo
+//                                .userService(new DefaultOAuth2UserService())
+//                        )
+//                );
         return http.build();
     }
 

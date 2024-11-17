@@ -1,6 +1,6 @@
 package com.foodsocial.social_media_food.service;
 
-import com.foodsocial.social_media_food.domain.Cookie;
+import com.foodsocial.social_media_food.domain.Cookies;
 import com.foodsocial.social_media_food.domain.User;
 import com.foodsocial.social_media_food.domain.Role;
 import com.foodsocial.social_media_food.repos.CookieRepository;
@@ -94,15 +94,23 @@ public class UserServiceImpl implements UserService {
     }
 
     public void addCookie(User user, String token) {
-        Cookie cookie = new Cookie();
-        cookie.setUser(user);
-        cookie.setToken(token);
-        cookie.setExpiration(LocalDateTime.now().plusDays(30));
-        cookieRepository.save(cookie);
+        Cookies cookies = new Cookies();
+        cookies.setUser(user);
+        cookies.setToken(token);
+        cookies.setExpiration(LocalDateTime.now().plusDays(30));
+        cookieRepository.save(cookies);
     }
 
     @Transactional
     public void deleteCookie(String token) {
         cookieRepository.deleteByToken(token);
+    }
+
+    public User getUserByToken(String token) {
+        Cookies cookies = cookieRepository.findByToken(token);
+        if (cookies != null && !cookies.isExpired()) {
+            return cookies.getUser();
+        }
+        return null;
     }
 }

@@ -1,10 +1,11 @@
 package com.foodsocial.social_media_food.controller;
 
 import com.foodsocial.social_media_food.domain.User;
-import com.foodsocial.social_media_food.configuration.CookieConfig;
+import com.foodsocial.social_media_food.repos.CookieRepository;
 import com.foodsocial.social_media_food.requests.LoginRequest;
 import com.foodsocial.social_media_food.requests.SignupRequest;
 import com.foodsocial.social_media_food.security.UnauthorizedException;
+import com.foodsocial.social_media_food.service.CookieService;
 import com.foodsocial.social_media_food.service.UserService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -29,6 +30,9 @@ public class AuthController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private CookieService cookieService;
+
     @PostMapping("/register")
     public @ResponseBody ResponseEntity<String> registerUser(@RequestBody SignupRequest signUpRequest, HttpServletResponse response) {
         try {
@@ -44,7 +48,7 @@ public class AuthController {
             userService.addCookie(user, token);
 
             // Добавление куки
-            CookieConfig.addAuthCookie(response, token);
+            cookieService.addAuthCookie(response, token);
 
             return ResponseEntity.ok("User registered successfully");
         } catch (RuntimeException e) {
@@ -69,7 +73,7 @@ public class AuthController {
             userService.addCookie(user, token);
 
             //Добавление куки
-            CookieConfig.addAuthCookie(response, token);
+            cookieService.addAuthCookie(response, token);
 
             return ResponseEntity.ok("Login successful");
         } catch (RuntimeException e) {
@@ -83,25 +87,27 @@ public class AuthController {
         if (auth != null && auth.isAuthenticated()) {
             SecurityContextHolder.clearContext();
 
-            // TODO
-            // ifAuthUser
-            // Смотрим текущий куки, если он активен, то возврат user, если нет вывод ошибки.
-
             // Проверка наличия куки
             Cookie[] cookies = request.getCookies();
             if (cookies != null) {
                 for (Cookie cookie : cookies) {
                     if ("token".equals(cookie.getName())) {
-                        userService.deleteCookie(cookie.getValue());
-                        break;
+                        try {
+                            User user = cookieService.ifAuthUser(cookie.getValue());
+                            userService.deleteCookie(cookie.getValue());
+
+                            // Удаление куки
+                            cookieService.deleteAuthCookie(response);
+
+                            return ResponseEntity.ok("Logout successful for user: " + user.getUsername());
+                        } catch (Exception e) {
+                            throw new UnauthorizedException(e.getMessage());
+                        }
                     }
                 }
             }
 
-            // Удаление куки
-            CookieConfig.deleteAuthCookie(response);
-
-            return ResponseEntity.ok("Logout successful");
+            throw new UnauthorizedException("No valid token found");
         } else {
             throw new UnauthorizedException("No user is currently logged in");
         }

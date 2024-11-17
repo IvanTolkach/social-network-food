@@ -22,7 +22,7 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
-    private Set<Cookie> cookies;
+    private Set<Cookies> cookies;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
@@ -60,11 +60,11 @@ public class User {
         this.password = password;
     }
 
-    public Set<Cookie> getCookies() {
+    public Set<Cookies> getCookies() {
         return cookies;
     }
 
-    public void setCookies(Set<Cookie> cookies) {
+    public void setCookies(Set<Cookies> cookies) {
         this.cookies = cookies;
     }
 

@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-public class Cookie {
+public class Cookies {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,6 +20,10 @@ public class Cookie {
 
     @Column(nullable = false)
     private LocalDateTime expiration;
+
+    public boolean isExpired() {
+        return expiration.isBefore(LocalDateTime.now());
+    }
 
     public Long getId() {
         return id;
