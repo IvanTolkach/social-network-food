@@ -83,6 +83,10 @@ public class AuthController {
         if (auth != null && auth.isAuthenticated()) {
             SecurityContextHolder.clearContext();
 
+            // TODO
+            // ifAuthUser
+            // Смотрим текущий куки, если он активен, то возврат user, если нет вывод ошибки.
+
             // Проверка наличия куки
             Cookie[] cookies = request.getCookies();
             if (cookies != null) {

@@ -4,6 +4,9 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 
 public class CookieConfig {
+    //TODO
+    // ifAuthUser(Token/Cookie)
+    // если есть пользователь, то его возвращаем, если нет, то throw new
 
     public static void addAuthCookie(HttpServletResponse response, String token) {
         Cookie authCookie = new Cookie("token", token);
