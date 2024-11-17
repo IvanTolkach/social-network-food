@@ -1,0 +1,8 @@
+{
+  "CurrentProjectSetting": null,
+
+  "prettier.enable": true,
+  "prettier.configPath": "./.prettierrc",
+  "editor.formatOnSave": true,
+  "prettier.requireConfig": true
+}
