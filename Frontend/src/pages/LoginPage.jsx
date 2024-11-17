@@ -15,7 +15,7 @@ function LoginPage() {
       console.log(data); // Вывод данных перед отправкой
       const response = await axios.post("http://localhost:8080/login", data); // Замените на правильный порт
       console.log("Ответ от сервера:", response.data);
-      alert("Авторизация успешна! Ура!");
+      alert("Авторизация успешна! Ура! Ура!");
       // Пример: перенаправление на главную страницу после успешной авторизации
       navigate("/dashboard");
     } catch (error) {
