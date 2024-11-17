@@ -18,20 +18,17 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeRequests(auth -> {
-                    auth.requestMatchers("/demo/register", "/demo/login", "/all",
-                            "/demo/logout", "/demo/current").permitAll();
+                    auth.requestMatchers("/register", "/login", "/all",
+                            "/logout", "/current").permitAll();
+                    auth.requestMatchers("/posts").permitAll();
+                    auth.requestMatchers("/posts/{id}").permitAll();
+                    auth.requestMatchers("/posts/create", "/posts/update/**", "/posts/delete/**", "/posts/our_posts").authenticated(); // Ограничить доступ для создания, обновления и удаления постов только авторизованным пользователям
                     auth.requestMatchers("/admin/**").hasRole("ADMIN");
                     auth.requestMatchers("/user/**").hasAnyRole("USER", "ADMIN");
                     auth.anyRequest().authenticated();
                 })
-                .formLogin(form -> form
-                        .loginPage("/login")
-                        .permitAll()
-                )
-                .logout(logout -> logout
-                        .logoutUrl("/logout")
-                        .permitAll()
-                )
+
+                // Аутентификация через GOOGLE
                 .oauth2Login(oauth2 -> oauth2
                         .userInfoEndpoint(userInfo -> userInfo
                                 .userService(new DefaultOAuth2UserService())

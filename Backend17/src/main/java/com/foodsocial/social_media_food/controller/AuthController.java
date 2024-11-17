@@ -24,7 +24,6 @@ import java.util.List;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/demo")
 public class AuthController {
 
     @Autowired
