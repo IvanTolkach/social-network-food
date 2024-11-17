@@ -33,7 +33,6 @@ public class AuthController {
     @PostMapping("/register")
     public @ResponseBody ResponseEntity<String> registerUser(@RequestBody SignupRequest signUpRequest, HttpServletResponse response) {
         try {
-            System.out.println("user");
             // Регистрация пользователя
             User user = userService.registerUser(
                     signUpRequest.getUsername(),

@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller // This means that this class is a Controller
-@RequestMapping(path="/demo")
 public class MainController {
 
     @Autowired // This means to get the bean called userRepository

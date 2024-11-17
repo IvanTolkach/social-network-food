@@ -1,5 +1,6 @@
 package com.foodsocial.social_media_food.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.Set;
 
@@ -20,6 +21,7 @@ public class User {
     private String password;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private Set<Cookie> cookies;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
