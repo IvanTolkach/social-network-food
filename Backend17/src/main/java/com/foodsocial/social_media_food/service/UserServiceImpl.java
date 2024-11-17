@@ -5,9 +5,11 @@ import com.foodsocial.social_media_food.domain.User;
 import com.foodsocial.social_media_food.domain.Role;
 import com.foodsocial.social_media_food.repos.CookieRepository;
 import com.foodsocial.social_media_food.repos.UserRepository;
+import com.foodsocial.social_media_food.security.AuthenticationException;
+import com.foodsocial.social_media_food.security.UserAlreadyExistsException;
+import com.foodsocial.social_media_food.security.ValidationException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -36,20 +38,20 @@ public class UserServiceImpl implements UserService {
     @Override
     public User registerUser(String username, String email, String password) {
         if (userRepository.findByUsername(username).isPresent()) {
-            throw new RuntimeException("Username already in use");
+            throw new UserAlreadyExistsException("Username already in use");
         }
         if (!validationService.validateUsername(username)) {
-            throw new RuntimeException("Invalid username format. Username may only " +
+            throw new ValidationException("Invalid username format. Username may only " +
                     "contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen.");
         }
         if (!validationService.validateEmail(email)) {
-            throw new RuntimeException("Invalid email format");
+            throw new ValidationException("Invalid email format");
         }
         if (userRepository.findByEmail(email).isPresent()) {
-            throw new RuntimeException("Email already in use");
+            throw new UserAlreadyExistsException("Email already in use");
         }
         if (!validationService.validatePassword(password, username)) {
-            throw new RuntimeException("Password is too weak.");
+            throw new ValidationException("Password is too weak.");
         }
         User user = new User();
         user.setUsername(username);
@@ -71,10 +73,10 @@ public class UserServiceImpl implements UserService {
             if (passwordService.matches(password, user.getPassword())) {
                 return user;
             } else {
-                throw new RuntimeException("Incorrect password");
+                throw new AuthenticationException("Incorrect login or password");
             }
         } else {
-            throw new RuntimeException("User not found");
+            throw new AuthenticationException("Incorrect login or password");
         }
     }
 
