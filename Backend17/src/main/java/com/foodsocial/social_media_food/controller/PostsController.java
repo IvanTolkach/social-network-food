@@ -55,8 +55,6 @@ public class PostsController {
         throw new UnauthorizedException("No valid token found");
     }
 
-
-
     @GetMapping
     public ResponseEntity<List<Post>> getAllPosts() {
         List<Post> posts = postRepository.findAll();
@@ -77,6 +75,7 @@ public class PostsController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdPost);
     }
 
+    //TODO СДЕЛАТЬ НЕ РАБОТАЕТ
     @PutMapping("/update/{id}")
     public ResponseEntity<Post> updatePost(@PathVariable Long id, @RequestBody Post post, HttpServletRequest request) {
         User user = getAuthenticatedUser(request);
@@ -91,10 +90,16 @@ public class PostsController {
             throw new ForbiddenException("Access denied");
         }
 
-        post.setId(id);
-        Post updatedPost = postRepository.save(post);
+        existingPostEntity.setTitle(post.getTitle() != null ? post.getTitle() : existingPostEntity.getTitle());
+        existingPostEntity.setDescription(post.getDescription() != null ? post.getDescription() : existingPostEntity.getDescription());
+        existingPostEntity.setImage(post.getImage() != null ? post.getImage() : existingPostEntity.getImage());
+
+        existingPostEntity.setUserId(existingPostEntity.getUserId());
+
+        Post updatedPost = postRepository.save(existingPostEntity);
         return ResponseEntity.ok(updatedPost);
     }
+
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deletePost(@PathVariable Long id, HttpServletRequest request) {
