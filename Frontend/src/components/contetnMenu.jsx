@@ -23,12 +23,12 @@ function ContentMenu() {
             />
           </svg>
           <b>Сортировка по:</b>
-          <span>популярности</span>
+          <span>Популярности</span>
         </div>
         <div className="sort__popup">
           <ul>
-            <li className="active">популярности</li>
-            <li>алфавиту</li>
+            <li className="active">Популярности</li>
+            <li>Дате</li>
           </ul>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import React, { useState } from "react"; // Импортируем React и useState
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; // Импортируем useNavigate для маршрутизации
+import Cookies from "js-cookie"; // Импортируем js-cookie
 
 function LoginPage() {
   const [identifier, setEmail] = useState("");
@@ -15,9 +16,13 @@ function LoginPage() {
       console.log(data); // Вывод данных перед отправкой
       const response = await axios.post("http://localhost:8080/login", data); // Замените на правильный порт
       console.log("Ответ от сервера:", response.data);
-      alert("Авторизация успешна! Ура! Ура! Ура!");
+      alert("Авторизация успешна!");
+
+      // Сохранение токена авторизации в cookie
+      Cookies.set("authToken", response.data.token, { expires: 7 }); // Токен хранится 7 дней
+
       // Пример: перенаправление на главную страницу после успешной авторизации
-      navigate("/dashboard");
+      navigate("../");
     } catch (error) {
       console.error("Ошибка при авторизации:", error);
       alert("Неверные данные. Попробуйте снова.");

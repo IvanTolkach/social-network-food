@@ -1,6 +1,7 @@
 import React, { useState } from "react"; // Импортируем React и useState
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; // Импортируем useNavigate для маршрутизации
+import Cookies from "js-cookie"; // Импортируем js-cookie
 
 function RegistrationPage() {
   const [username, setUsername] = useState("");
@@ -17,6 +18,9 @@ function RegistrationPage() {
       const response = await axios.post("http://localhost:8080/register", data); // Замените на правильный порт
       console.log("Ответ от сервера:", response.data);
       alert("Регистрация успешна!");
+
+      // Сохранение токена авторизации в cookie
+      Cookies.set("authToken", response.data.token, { expires: 7 }); // Токен хранится 7
     } catch (error) {
       console.error("Ошибка при отправке данных:", error);
       alert("Произошла ошибка. Попробуйте снова.");
