@@ -21,6 +21,9 @@ public class Post {
     @JsonManagedReference
     private List<PostComment> comments;
 
+    private int likesCount;
+    private int commentsCount;
+
     @Column(nullable = false)
     private Integer userId;
 
@@ -70,6 +73,22 @@ public class Post {
 
     public void setComments(List<PostComment> comments) {
         this.comments = comments;
+    }
+
+    public int getLikesCount() {
+        return likesCount;
+    }
+
+    public void setLikesCount(int likesCount) {
+        this.likesCount = likesCount;
+    }
+
+    public int getCommentsCount() {
+        return commentsCount;
+    }
+
+    public void setCommentsCount(int commentsCount) {
+        this.commentsCount = commentsCount;
     }
 
     public Integer getUserId() {

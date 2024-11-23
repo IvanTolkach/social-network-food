@@ -114,17 +114,19 @@ public class PostsController {
         User user = userService.getAuthenticatedUser(request);
         Optional<PostLike> existingLike = postLikeRepository.findByPostIdAndUserId(id, user.getId());
 
+        Post post = postRepository.findById(id).orElseThrow(() -> new NotFoundException("Post not found"));
+
         if (existingLike.isPresent()) {
             // Если лайк уже существует, убираем его
             postLikeRepository.delete(existingLike.get());
+            post.setLikesCount(post.getLikesCount() - 1);
             return ResponseEntity.noContent().build();
         } else {
             // Если лайка нет, добавляем его
-            Post post = postRepository.findById(id).orElseThrow(() -> new NotFoundException("Post not found"));
-
             PostLike like = new PostLike();
             like.setPost(post);
             like.setUserId(user.getId());
+            post.setLikesCount(post.getLikesCount() + 1);
             postLikeRepository.save(like);
 
             return ResponseEntity.status(HttpStatus.CREATED).build();
@@ -147,6 +149,9 @@ public class PostsController {
         comment.setPost(post);
 
         PostComment createdComment = postCommentRepository.save(comment);
+        post.setCommentsCount(post.getCommentsCount() + 1);
+        postRepository.save(post);
+
         return ResponseEntity.status(HttpStatus.CREATED).body(createdComment);
     }
 
@@ -170,11 +175,16 @@ public class PostsController {
         User user = userService.getAuthenticatedUser(request);
         PostComment existingComment = postCommentRepository.findById(commentId).orElseThrow(() -> new NotFoundException("Comment not found"));
 
+        Post post = postRepository.findById(postId).orElseThrow(() -> new NotFoundException("Post not found"));
+
         if (!existingComment.getUserId().equals(user.getId()) && !existingComment.getPost().getUserId().equals(user.getId()) && !user.getRoles().contains("ADMIN")) {
             throw new ForbiddenException("Access denied");
         }
 
         postCommentRepository.delete(existingComment);
+        post.setCommentsCount(post.getCommentsCount() - 1);
+        postRepository.save(post);
+
         return ResponseEntity.noContent().build();
     }
 }
