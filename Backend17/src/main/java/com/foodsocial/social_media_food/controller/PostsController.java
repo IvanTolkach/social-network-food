@@ -38,23 +38,6 @@ public class PostsController {
 
     private static final Logger logger = Logger.getLogger(PostsController.class.getName());
 
-    private User getAuthenticatedUser(HttpServletRequest request) {
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                if ("token".equals(cookie.getName())) {
-                    try {
-                        User user = cookieService.ifAuthUser(cookie.getValue());
-                        return user;
-                    } catch (UnauthorizedException e) {
-                        throw new UnauthorizedException("Invalid token provided");
-                    }
-                }
-            }
-        }
-        throw new UnauthorizedException("No valid token found");
-    }
-
     @GetMapping
     public ResponseEntity<List<Post>> getAllPosts() {
         List<Post> posts = postRepository.findAll();
@@ -69,7 +52,7 @@ public class PostsController {
 
     @PostMapping
     public ResponseEntity<Post> createPost(@RequestBody Post post, HttpServletRequest request) {
-        User user = getAuthenticatedUser(request);
+        User user = userService.getAuthenticatedUser(request);
         post.setUserId(user.getId());
         Post createdPost = postRepository.save(post);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdPost);
@@ -77,7 +60,7 @@ public class PostsController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Post> updatePost(@PathVariable Long id, @RequestBody Post post, HttpServletRequest request) {
-        User user = getAuthenticatedUser(request);
+        User user = userService.getAuthenticatedUser(request);
         Optional<Post> existingPost = postRepository.findById(id);
 
         if (!existingPost.isPresent()) {
@@ -101,7 +84,7 @@ public class PostsController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePost(@PathVariable Long id, HttpServletRequest request) {
-        User user = getAuthenticatedUser(request);
+        User user = userService.getAuthenticatedUser(request);
 
         Optional<Post> existingPost = postRepository.findById(id);
 
@@ -120,7 +103,7 @@ public class PostsController {
 
     @GetMapping("/our_posts")
     public ResponseEntity<List<Post>> getCurrentUserPosts(HttpServletRequest request) {
-        User user = getAuthenticatedUser(request);
+        User user = userService.getAuthenticatedUser(request);
         List<Post> posts = postRepository.findByUserId(user.getId());
         return ResponseEntity.ok(posts);
     }

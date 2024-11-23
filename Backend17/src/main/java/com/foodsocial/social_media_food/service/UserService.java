@@ -1,6 +1,7 @@
 package com.foodsocial.social_media_food.service;
 
 import com.foodsocial.social_media_food.domain.User;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 public interface UserService extends UserDetailsService {
@@ -13,5 +14,5 @@ public interface UserService extends UserDetailsService {
 
     void deleteCookie(String token);
 
-    User getUserByToken(String token);
+    User getAuthenticatedUser(HttpServletRequest request);
 }

@@ -6,8 +6,11 @@ import com.foodsocial.social_media_food.domain.Role;
 import com.foodsocial.social_media_food.repos.CookieRepository;
 import com.foodsocial.social_media_food.repos.UserRepository;
 import com.foodsocial.social_media_food.security.AuthenticationException;
+import com.foodsocial.social_media_food.security.UnauthorizedException;
 import com.foodsocial.social_media_food.security.UserAlreadyExistsException;
 import com.foodsocial.social_media_food.security.ValidationException;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -34,6 +37,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private CookieRepository cookieRepository;
+
+    @Autowired
+    private CookieService cookieService;
 
     @Override
     public User registerUser(String username, String email, String password) {
@@ -112,5 +118,23 @@ public class UserServiceImpl implements UserService {
             return cookies.getUser();
         }
         return null;
+    }
+
+    @Override
+    public User getAuthenticatedUser(HttpServletRequest request) {
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if ("token".equals(cookie.getName())) {
+                    try {
+                        User user = cookieService.ifAuthUser(cookie.getValue());
+                        return user;
+                    } catch (UnauthorizedException e) {
+                        throw new UnauthorizedException("Invalid token provided");
+                    }
+                }
+            }
+        }
+        throw new UnauthorizedException("No valid token found");
     }
 }
