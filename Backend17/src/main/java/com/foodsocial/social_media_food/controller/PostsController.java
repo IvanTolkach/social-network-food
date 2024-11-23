@@ -47,15 +47,24 @@ public class PostsController {
     private static final Logger logger = Logger.getLogger(PostsController.class.getName());
 
     @GetMapping
-    public ResponseEntity<List<Post>> getAllPosts() {
+    public ResponseEntity<List<Post>> getAllPosts(HttpServletRequest request) {
+        User user = userService.getAuthenticatedUser(request);
+        logger.info("User ID " + user.getId() + " is fetching all posts");
         List<Post> posts = postRepository.findAll();
         return ResponseEntity.ok(posts);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Post> getPostById(@PathVariable Long id) {
+    public ResponseEntity<Post> getPostById(@PathVariable Long id, HttpServletRequest request) {
+        User user = userService.getAuthenticatedUser(request);
+        logger.info("User ID " + user.getId() + " is fetching post with ID: " + id);
         Optional<Post> post = postRepository.findById(id);
-        return post.map(ResponseEntity::ok).orElseThrow(() -> new NotFoundException("Post not found"));
+        if (post.isPresent()) {
+            return ResponseEntity.ok(post.get());
+        } else {
+            logger.warning("Post not found with ID: " + id + " for User ID: " + user.getId());
+            throw new NotFoundException("Post not found");
+        }
     }
 
     @PostMapping
@@ -63,6 +72,7 @@ public class PostsController {
         User user = userService.getAuthenticatedUser(request);
         post.setUserId(user.getId());
         Post createdPost = postRepository.save(post);
+        logger.info("User ID " + user.getId() + " created post with ID: " + createdPost.getId());
         return ResponseEntity.status(HttpStatus.CREATED).body(createdPost);
     }
 
@@ -72,40 +82,44 @@ public class PostsController {
         Optional<Post> existingPost = postRepository.findById(id);
 
         if (!existingPost.isPresent()) {
+            logger.warning("Post not found with ID: " + id + " for User ID: " + user.getId() + ". Update failed");
             throw new NotFoundException("Post not found");
         }
 
         Post existingPostEntity = existingPost.get();
         if (!existingPostEntity.getUserId().equals(user.getId()) && !user.getRoles().contains("ADMIN")) {
+            logger.warning("Access denied for User ID: " + user.getId() + " when updating post with ID: " + id);
             throw new ForbiddenException("Access denied");
         }
 
         existingPostEntity.setTitle(post.getTitle() != null ? post.getTitle() : existingPostEntity.getTitle());
         existingPostEntity.setDescription(post.getDescription() != null ? post.getDescription() : existingPostEntity.getDescription());
         existingPostEntity.setImage(post.getImage() != null ? post.getImage() : existingPostEntity.getImage());
-
         existingPostEntity.setUserId(existingPostEntity.getUserId());
 
         Post updatedPost = postRepository.save(existingPostEntity);
+        logger.info("User ID " + user.getId() + " updated post with ID: " + updatedPost.getId());
         return ResponseEntity.ok(updatedPost);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePost(@PathVariable Long id, HttpServletRequest request) {
         User user = userService.getAuthenticatedUser(request);
-
         Optional<Post> existingPost = postRepository.findById(id);
 
         if (!existingPost.isPresent()) {
+            logger.warning("Post not found with ID: " + id + " for User ID: " + user.getId() + ". Delete failed");
             throw new NotFoundException("Post not found");
         }
 
         Post existingPostEntity = existingPost.get();
         if (!existingPostEntity.getUserId().equals(user.getId()) && !user.getRoles().contains("ADMIN")) {
+            logger.warning("Access denied for User ID: " + user.getId() + " when deleting post with ID: " + id);
             throw new ForbiddenException("Access denied");
         }
 
         postRepository.deleteById(id);
+        logger.info("User ID " + user.getId() + " deleted post with ID: " + id);
         return ResponseEntity.noContent().build();
     }
 
@@ -120,6 +134,8 @@ public class PostsController {
             // Если лайк уже существует, убираем его
             postLikeRepository.delete(existingLike.get());
             post.setLikesCount(post.getLikesCount() - 1);
+            logger.info("User ID " + user.getId() + " removed like from post with ID: " + id);
+            postRepository.save(post);
             return ResponseEntity.noContent().build();
         } else {
             // Если лайка нет, добавляем его
@@ -128,7 +144,8 @@ public class PostsController {
             like.setUserId(user.getId());
             post.setLikesCount(post.getLikesCount() + 1);
             postLikeRepository.save(like);
-
+            logger.info("User ID " + user.getId() + " added like to post with ID: " + id);
+            postRepository.save(post);
             return ResponseEntity.status(HttpStatus.CREATED).build();
         }
     }
@@ -136,6 +153,7 @@ public class PostsController {
     @GetMapping("/our_posts")
     public ResponseEntity<List<Post>> getCurrentUserPosts(HttpServletRequest request) {
         User user = userService.getAuthenticatedUser(request);
+        logger.info("User ID " + user.getId() + " is fetching his posts");
         List<Post> posts = postRepository.findByUserId(user.getId());
         return ResponseEntity.ok(posts);
     }
@@ -152,22 +170,8 @@ public class PostsController {
         post.setCommentsCount(post.getCommentsCount() + 1);
         postRepository.save(post);
 
+        logger.info("User ID " + user.getId() + " added comment to post with ID: " + id);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdComment);
-    }
-
-    @PutMapping("/{postId}/comment/{commentId}")
-    public ResponseEntity<PostComment> updateComment(@PathVariable Long postId, @PathVariable Long commentId, @RequestBody PostComment comment, HttpServletRequest request) {
-        User user = userService.getAuthenticatedUser(request);
-        PostComment existingComment = postCommentRepository.findById(commentId).orElseThrow(() -> new NotFoundException("Comment not found"));
-
-        if (!existingComment.getUserId().equals(user.getId()) && !user.getRoles().contains("ADMIN")) {
-            throw new ForbiddenException("Access denied");
-        }
-
-        existingComment.setDescription(comment.getDescription());
-        PostComment updatedComment = postCommentRepository.save(existingComment);
-
-        return ResponseEntity.ok(updatedComment);
     }
 
     @DeleteMapping("/{postId}/comment/{commentId}")
@@ -178,6 +182,7 @@ public class PostsController {
         Post post = postRepository.findById(postId).orElseThrow(() -> new NotFoundException("Post not found"));
 
         if (!existingComment.getUserId().equals(user.getId()) && !existingComment.getPost().getUserId().equals(user.getId()) && !user.getRoles().contains("ADMIN")) {
+            logger.warning("Access denied deleting comment" + commentId + " from post with id: " + postId + " for user id: " + user.getId());
             throw new ForbiddenException("Access denied");
         }
 
@@ -185,6 +190,7 @@ public class PostsController {
         post.setCommentsCount(post.getCommentsCount() - 1);
         postRepository.save(post);
 
+        logger.info("Deleted comment with id: " + commentId + " from post with id: " + postId + " by user id:" + user.getId());
         return ResponseEntity.noContent().build();
     }
 }
