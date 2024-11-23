@@ -23,6 +23,7 @@ public class SecurityConfig {
                     auth.requestMatchers("/posts").permitAll();
                     auth.requestMatchers("/posts/{id}").permitAll();
                     auth.requestMatchers("/posts/{id}/like").permitAll();
+                    auth.requestMatchers("/posts/{id}/comment", "/posts/{id}/comment/**").permitAll();
                     auth.requestMatchers("/posts/our_posts").permitAll();
                     auth.requestMatchers("/admin/**").hasRole("ADMIN");
                     auth.requestMatchers("/user/**").hasAnyRole("USER", "ADMIN");

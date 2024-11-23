@@ -1,6 +1,8 @@
 package com.foodsocial.social_media_food.controller;
 
+import com.foodsocial.social_media_food.domain.PostComment;
 import com.foodsocial.social_media_food.domain.PostLike;
+import com.foodsocial.social_media_food.repos.PostCommentRepository;
 import com.foodsocial.social_media_food.security.ForbiddenException;
 import com.foodsocial.social_media_food.security.NotFoundException;
 import com.foodsocial.social_media_food.service.CookieService;
@@ -29,6 +31,9 @@ public class PostsController {
 
     @Autowired
     private PostLikeRepository postLikeRepository;
+
+    @Autowired
+    private PostCommentRepository postCommentRepository;
 
     @Autowired
     private UserRepository userRepository;
@@ -108,6 +113,7 @@ public class PostsController {
     public ResponseEntity<Void> likeOrUnlikePost(@PathVariable Long id, HttpServletRequest request) {
         User user = userService.getAuthenticatedUser(request);
         Optional<PostLike> existingLike = postLikeRepository.findByPostIdAndUserId(id, user.getId());
+
         if (existingLike.isPresent()) {
             // Если лайк уже существует, убираем его
             postLikeRepository.delete(existingLike.get());
@@ -115,8 +121,12 @@ public class PostsController {
         } else {
             // Если лайка нет, добавляем его
             Post post = postRepository.findById(id).orElseThrow(() -> new NotFoundException("Post not found"));
-            PostLike like = new PostLike(); like.setPost(post);
-            like.setUserId(user.getId()); postLikeRepository.save(like);
+
+            PostLike like = new PostLike();
+            like.setPost(post);
+            like.setUserId(user.getId());
+            postLikeRepository.save(like);
+
             return ResponseEntity.status(HttpStatus.CREATED).build();
         }
     }
@@ -126,5 +136,45 @@ public class PostsController {
         User user = userService.getAuthenticatedUser(request);
         List<Post> posts = postRepository.findByUserId(user.getId());
         return ResponseEntity.ok(posts);
+    }
+
+    @PostMapping("/{id}/comment")
+    public ResponseEntity<PostComment> addComment(@PathVariable Long id, @RequestBody PostComment comment, HttpServletRequest request) {
+        User user = userService.getAuthenticatedUser(request);
+        Post post = postRepository.findById(id).orElseThrow(() -> new NotFoundException("Post not found"));
+
+        comment.setUserId(user.getId());
+        comment.setPost(post);
+
+        PostComment createdComment = postCommentRepository.save(comment);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdComment);
+    }
+
+    @PutMapping("/{postId}/comment/{commentId}")
+    public ResponseEntity<PostComment> updateComment(@PathVariable Long postId, @PathVariable Long commentId, @RequestBody PostComment comment, HttpServletRequest request) {
+        User user = userService.getAuthenticatedUser(request);
+        PostComment existingComment = postCommentRepository.findById(commentId).orElseThrow(() -> new NotFoundException("Comment not found"));
+
+        if (!existingComment.getUserId().equals(user.getId()) && !user.getRoles().contains("ADMIN")) {
+            throw new ForbiddenException("Access denied");
+        }
+
+        existingComment.setDescription(comment.getDescription());
+        PostComment updatedComment = postCommentRepository.save(existingComment);
+
+        return ResponseEntity.ok(updatedComment);
+    }
+
+    @DeleteMapping("/{postId}/comment/{commentId}")
+    public ResponseEntity<Void> deleteComment(@PathVariable Long postId, @PathVariable Long commentId, HttpServletRequest request) {
+        User user = userService.getAuthenticatedUser(request);
+        PostComment existingComment = postCommentRepository.findById(commentId).orElseThrow(() -> new NotFoundException("Comment not found"));
+
+        if (!existingComment.getUserId().equals(user.getId()) && !existingComment.getPost().getUserId().equals(user.getId()) && !user.getRoles().contains("ADMIN")) {
+            throw new ForbiddenException("Access denied");
+        }
+
+        postCommentRepository.delete(existingComment);
+        return ResponseEntity.noContent().build();
     }
 }

@@ -1,5 +1,6 @@
 package com.foodsocial.social_media_food.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class Post {
     private List<PostLike> likes;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<PostComment> comments;
 
     @Column(nullable = false)
