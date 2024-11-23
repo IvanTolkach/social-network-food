@@ -64,10 +64,10 @@ public class PostsController {
     @GetMapping("/{id}")
     public ResponseEntity<Post> getPostById(@PathVariable Long id) {
         Optional<Post> post = postRepository.findById(id);
-        return post.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        return post.map(ResponseEntity::ok).orElseThrow(() -> new NotFoundException("Post not found"));
     }
 
-    @PostMapping("/create")
+    @PostMapping
     public ResponseEntity<Post> createPost(@RequestBody Post post, HttpServletRequest request) {
         User user = getAuthenticatedUser(request);
         post.setUserId(user.getId());
@@ -75,8 +75,7 @@ public class PostsController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdPost);
     }
 
-    //TODO СДЕЛАТЬ НЕ РАБОТАЕТ
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Post> updatePost(@PathVariable Long id, @RequestBody Post post, HttpServletRequest request) {
         User user = getAuthenticatedUser(request);
         Optional<Post> existingPost = postRepository.findById(id);
@@ -100,8 +99,7 @@ public class PostsController {
         return ResponseEntity.ok(updatedPost);
     }
 
-
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePost(@PathVariable Long id, HttpServletRequest request) {
         User user = getAuthenticatedUser(request);
 
