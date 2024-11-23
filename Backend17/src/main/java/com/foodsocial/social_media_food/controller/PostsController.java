@@ -1,15 +1,15 @@
 package com.foodsocial.social_media_food.controller;
 
+import com.foodsocial.social_media_food.domain.PostLike;
 import com.foodsocial.social_media_food.security.ForbiddenException;
 import com.foodsocial.social_media_food.security.NotFoundException;
-import com.foodsocial.social_media_food.security.UnauthorizedException;
 import com.foodsocial.social_media_food.service.CookieService;
 import com.foodsocial.social_media_food.domain.Post;
 import com.foodsocial.social_media_food.domain.User;
 import com.foodsocial.social_media_food.repos.PostRepository;
+import com.foodsocial.social_media_food.repos.PostLikeRepository;
 import com.foodsocial.social_media_food.repos.UserRepository;
 import com.foodsocial.social_media_food.service.UserService;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,6 +26,9 @@ public class PostsController {
 
     @Autowired
     private PostRepository postRepository;
+
+    @Autowired
+    private PostLikeRepository postLikeRepository;
 
     @Autowired
     private UserRepository userRepository;
@@ -99,6 +102,23 @@ public class PostsController {
 
         postRepository.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/{id}/like")
+    public ResponseEntity<Void> likeOrUnlikePost(@PathVariable Long id, HttpServletRequest request) {
+        User user = userService.getAuthenticatedUser(request);
+        Optional<PostLike> existingLike = postLikeRepository.findByPostIdAndUserId(id, user.getId());
+        if (existingLike.isPresent()) {
+            // Если лайк уже существует, убираем его
+            postLikeRepository.delete(existingLike.get());
+            return ResponseEntity.noContent().build();
+        } else {
+            // Если лайка нет, добавляем его
+            Post post = postRepository.findById(id).orElseThrow(() -> new NotFoundException("Post not found"));
+            PostLike like = new PostLike(); like.setPost(post);
+            like.setUserId(user.getId()); postLikeRepository.save(like);
+            return ResponseEntity.status(HttpStatus.CREATED).build();
+        }
     }
 
     @GetMapping("/our_posts")

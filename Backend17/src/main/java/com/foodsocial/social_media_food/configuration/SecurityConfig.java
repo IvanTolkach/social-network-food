@@ -22,8 +22,8 @@ public class SecurityConfig {
                             "/logout", "/current").permitAll();
                     auth.requestMatchers("/posts").permitAll();
                     auth.requestMatchers("/posts/{id}").permitAll();
-                    // TODO Ограничить доступ для создания, обновления и удаления постов только авторизованным пользователям
-                    auth.requestMatchers("/posts/create", "/posts/update/**", "/posts/delete/**", "/posts/our_posts").permitAll();
+                    auth.requestMatchers("/posts/{id}/like").permitAll();
+                    auth.requestMatchers("/posts/our_posts").permitAll();
                     auth.requestMatchers("/admin/**").hasRole("ADMIN");
                     auth.requestMatchers("/user/**").hasAnyRole("USER", "ADMIN");
                     auth.anyRequest().authenticated();
