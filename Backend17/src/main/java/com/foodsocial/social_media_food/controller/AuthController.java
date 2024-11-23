@@ -1,7 +1,6 @@
 package com.foodsocial.social_media_food.controller;
 
 import com.foodsocial.social_media_food.domain.User;
-import com.foodsocial.social_media_food.repos.CookieRepository;
 import com.foodsocial.social_media_food.requests.LoginRequest;
 import com.foodsocial.social_media_food.requests.SignupRequest;
 import com.foodsocial.social_media_food.security.UnauthorizedException;
@@ -23,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 @Controller
 public class AuthController {
@@ -32,6 +32,8 @@ public class AuthController {
 
     @Autowired
     private CookieService cookieService;
+
+    private static final Logger logger = Logger.getLogger(AuthController.class.getName());
 
     @PostMapping("/register")
     public @ResponseBody ResponseEntity<String> registerUser(@RequestBody SignupRequest signUpRequest, HttpServletResponse response) {
@@ -50,9 +52,10 @@ public class AuthController {
             // Добавление куки
             cookieService.addAuthCookie(response, token);
 
+            logger.info("User registered successfully with username: " + user.getUsername());
             return ResponseEntity.ok("User registered successfully");
         } catch (RuntimeException e) {
-            // Обработка ошибок регистрации
+            logger.warning("Error during user registration: " + e.getMessage());
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
@@ -75,8 +78,10 @@ public class AuthController {
             //Добавление куки
             cookieService.addAuthCookie(response, token);
 
+            logger.info("Login successful for user: " + user.getUsername());
             return ResponseEntity.ok("Login successful");
         } catch (RuntimeException e) {
+            logger.warning("Login failed for identifier: " + loginRequest.getIdentifier() + " - " + e.getMessage());
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
         }
     }
@@ -99,30 +104,33 @@ public class AuthController {
                             // Удаление куки
                             cookieService.deleteAuthCookie(response);
 
+                            logger.info("Logout successful for user: " + user.getUsername());
                             return ResponseEntity.ok("Logout successful for user: " + user.getUsername());
                         } catch (Exception e) {
+                            logger.warning("Logout failed: " + e.getMessage());
                             throw new UnauthorizedException(e.getMessage());
                         }
                     }
                 }
             }
 
+            logger.warning("No valid token found during logout");
             throw new UnauthorizedException("No valid token found");
         } else {
+            logger.warning("No user is currently logged in during logout attempt");
             throw new UnauthorizedException("No user is currently logged in");
         }
     }
 
     @GetMapping("/current")
     public @ResponseBody ResponseEntity<String> currentUser(HttpServletRequest request, HttpServletResponse response) {
+        logger.info("Checking current user");
 
-        //получение куки, а именно списка, тебе нужен по getName тот, который ты задал
+        // Получение куки, а именно списка, тебе нужен по getName тот, который ты задал
         Cookie[] cookies = request.getCookies();
-        
         if (cookies != null) {
-            Arrays.stream(cookies).forEach(cookie -> System.out.println(cookie.getName() + " " + " " + cookie.getValue()));
+            Arrays.stream(cookies).forEach(cookie -> logger.info("Cookie: " + cookie.getName() + " " + cookie.getValue()));
         }
         return ResponseEntity.ok("{\n\t'status': 'OK'\n\t'data': 'success'\n}");
     }
-
 }
