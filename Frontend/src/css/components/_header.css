@@ -1,0 +1,32 @@
+@import "../_variables.css";
+
+.header {
+  border-bottom: 3px solid #f6f6f6; /* $gray-line */
+  padding: 40px 0;
+}
+
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__logo {
+  display: flex;
+}
+
+.header__logo img {
+  margin-right: 15px;
+}
+
+.header__logo h1 {
+  color: #181818;
+  font-size: 24px;
+  letter-spacing: 1%;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.header__logo p {
+  color: #7b7b7b;
+}

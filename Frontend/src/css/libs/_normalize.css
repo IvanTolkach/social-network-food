@@ -15,7 +15,7 @@ html {
 body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  color: $black;
+  color: #232323; /* Заменено значение переменной $black */
 }
 
 a,
@@ -27,7 +27,7 @@ h2,
 h3,
 h4,
 h5 {
-  color: $black;
+  color: #232323; /* Заменено значение переменной $black */
 }
 
 h1 {
@@ -44,12 +44,12 @@ a {
   text-decoration: none;
 }
 
-@mixin noselect {
+/* noselect миксин преобразован в стандартные CSS-свойства */
+.noselect {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
+  -moz-user-select: none; /* Старые версии Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Opera and Firefox */
+  user-select: none; /* Современные браузеры */
 }

@@ -1,10 +1,4 @@
-/* Общие стили */
-body {
-  font-family: "Arial", sans-serif;
-  background-color: #f8f8f8;
-  margin: 0;
-  padding: 0;
-}
+@import "../_variables.css";
 
 /* Контейнер для всей страницы */
 .registration-container {
@@ -41,10 +35,10 @@ input {
   border-radius: 4px;
   font-size: 14px;
   outline: none;
+}
 
-  &:focus {
-    border-color: #6c63ff;
-  }
+input:focus {
+  border-color: #6c63ff;
 }
 
 button {
@@ -56,10 +50,10 @@ button {
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s;
+}
 
-  &:hover {
-    background-color: #5a52e4;
-  }
+button:hover {
+  background-color: #5a52e4;
 }
 
 /* Стили для сообщений об ошибках */

@@ -7,7 +7,7 @@ import PostBlock from "../components/postBlock";
 import { Routes, Route, useLocation } from "react-router-dom";
 import RegistrationPage from "../pages/registration_page.jsx";
 import LoginPage from "../pages/LoginPage.jsx";
-import "../scss/app.scss";
+import "../css/app.css";
 
 function MainPage() {
   //const navigate = useNavigate();
