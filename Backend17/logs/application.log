@@ -1,0 +1,37 @@
+2024-11-24 20:47:17 - Starting SocialMediaFoodApplication using Java 23.0.1 with PID 9296 (C:\Users\PC\Documents\GitHub\social-network-food\Backend17\target\classes started by PC in C:\Users\PC\Documents\GitHub\social-network-food\Backend17)
+2024-11-24 20:47:17 - No active profile set, falling back to 1 default profile: "default"
+2024-11-24 20:47:17 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-24 20:47:17 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-24 20:47:18 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-24 20:47:18 - Finished Spring Data repository scanning in 68 ms. Found 6 JPA repository interfaces.
+2024-11-24 20:47:19 - Tomcat initialized with port 8080 (http)
+2024-11-24 20:47:19 - Starting service [Tomcat]
+2024-11-24 20:47:19 - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-24 20:47:19 - Initializing Spring embedded WebApplicationContext
+2024-11-24 20:47:19 - Root WebApplicationContext: initialization completed in 1495 ms
+2024-11-24 20:47:19 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-24 20:47:19 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-24 20:47:19 - HHH000026: Second-level cache disabled
+2024-11-24 20:47:20 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-24 20:47:20 - HikariPool-1 - Starting...
+2024-11-24 20:47:20 - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@40f51964
+2024-11-24 20:47:20 - HikariPool-1 - Start completed.
+2024-11-24 20:47:21 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-24 20:47:21 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-24 20:47:22 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-24 20:47:22 - Global AuthenticationManager configured with UserDetailsService bean with name userServiceImpl
+2024-11-24 20:47:22 - Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-11-24 20:47:22 - LiveReload server is running on port 35729
+2024-11-24 20:47:22 - Tomcat started on port 8080 (http) with context path '/'
+2024-11-24 20:47:22 - Started SocialMediaFoodApplication in 5.221 seconds (process running for 5.796)
+2024-11-24 20:49:32 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-24 20:49:32 - Initializing Servlet 'dispatcherServlet'
+2024-11-24 20:49:32 - Completed initialization in 1 ms
+2024-11-24 20:49:33 - Login successful for user: Dota1
+2024-11-24 20:55:49 - Post created with id: 4
+2024-11-24 20:56:10 - User ID 602 added like to post with ID: 4
+2024-11-24 20:56:13 - User ID 602 is fetching his posts
+2024-11-24 20:56:35 - User ID 602 is fetching all posts
+2024-11-24 20:56:51 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-24 20:56:51 - HikariPool-1 - Shutdown initiated...
+2024-11-24 20:56:51 - HikariPool-1 - Shutdown completed.

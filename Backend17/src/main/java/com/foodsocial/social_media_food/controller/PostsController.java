@@ -14,10 +14,16 @@ import com.foodsocial.social_media_food.repos.UserRepository;
 import com.foodsocial.social_media_food.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
@@ -44,6 +50,9 @@ public class PostsController {
     @Autowired
     private CookieService cookieService;
 
+    @Value("${upload.path}")
+    private String uploadPath;
+
     private static final Logger logger = Logger.getLogger(PostsController.class.getName());
 
     @GetMapping
@@ -68,11 +77,32 @@ public class PostsController {
     }
 
     @PostMapping
-    public ResponseEntity<Post> createPost(@RequestBody Post post, HttpServletRequest request) {
+    public ResponseEntity<Post> createPost(@RequestParam("title") String title,
+                                           @RequestParam("description") String description,
+                                           @RequestParam(value = "image", required = false) MultipartFile image,
+                                           HttpServletRequest request) {
         User user = userService.getAuthenticatedUser(request);
+        Post post = new Post();
+        post.setTitle(title);
+        post.setDescription(description);
         post.setUserId(user.getId());
+
+        if (image != null && !image.isEmpty()) {
+            try {
+                // Загрузим изображение
+                String filename = System.currentTimeMillis() + "_" + image.getOriginalFilename();
+                Path path = Paths.get(uploadPath).resolve(filename);
+                Files.write(path, image.getBytes()); post.setImage("/uploads/" + filename);
+            } catch (IOException e) {
+                logger.severe("Could not upload image: " + e.getMessage());
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+            }
+        } else {
+            post.setImage("placeholder.jpg"); // Заглушка
+        }
+
         Post createdPost = postRepository.save(post);
-        logger.info("User ID " + user.getId() + " created post with ID: " + createdPost.getId());
+        logger.info("Post created with id: " + createdPost.getId());
         return ResponseEntity.status(HttpStatus.CREATED).body(createdPost);
     }
 
