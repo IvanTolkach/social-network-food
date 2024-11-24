@@ -77,13 +77,11 @@ public class PostsController {
     }
 
     @PostMapping
-    public ResponseEntity<Post> createPost(@RequestParam("title") String title,
-                                           @RequestParam("description") String description,
+    public ResponseEntity<Post> createPost(@RequestParam("description") String description,
                                            @RequestParam(value = "image", required = false) MultipartFile image,
                                            HttpServletRequest request) {
         User user = userService.getAuthenticatedUser(request);
         Post post = new Post();
-        post.setTitle(title);
         post.setDescription(description);
         post.setUserId(user.getId());
 
@@ -122,7 +120,6 @@ public class PostsController {
             throw new ForbiddenException("Access denied");
         }
 
-        existingPostEntity.setTitle(post.getTitle() != null ? post.getTitle() : existingPostEntity.getTitle());
         existingPostEntity.setDescription(post.getDescription() != null ? post.getDescription() : existingPostEntity.getDescription());
         existingPostEntity.setImage(post.getImage() != null ? post.getImage() : existingPostEntity.getImage());
         existingPostEntity.setUserId(existingPostEntity.getUserId());
