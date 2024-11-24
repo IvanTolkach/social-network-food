@@ -25,6 +25,7 @@ public class SecurityConfig {
                     auth.requestMatchers("/posts/{id}/like").permitAll();
                     auth.requestMatchers("/posts/{id}/comment", "/posts/{id}/comment/**").permitAll();
                     auth.requestMatchers("/posts/our_posts").permitAll();
+                    auth.requestMatchers("/upload/photo", "/upload/photo/{filename:.+}").permitAll();
                     auth.requestMatchers("/admin/**").hasRole("ADMIN");
                     auth.requestMatchers("/user/**").hasAnyRole("USER", "ADMIN");
                     auth.anyRequest().authenticated();
