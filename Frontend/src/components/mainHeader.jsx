@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import SocialFoodLogo from "../img/Logo.png";
 
 function MainHeader({ isAuthenticated, onLogout }) {
   return (
     <div className="header">
       <div className="container">
         <div className="header__logo">
-          <img width="54" src="" alt="SocialFoodLogo" />
-          <div>
+          <img width="100" src={SocialFoodLogo} alt="SocialFoodLogo" />
+          <div className="SocialFoodLabel">
             <h1>Social Food</h1>
-            <p>*Здесь могла быть ваша реклама(потом придумать текст)*</p>
           </div>
         </div>
         <div className="header__cart">

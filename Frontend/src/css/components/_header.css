@@ -1,8 +1,9 @@
 @import "../_variables.css";
 
 .header {
-  border-bottom: 3px solid #f6f6f6; /* $gray-line */
-  padding: 40px 0;
+  border-bottom: 3px solid #f6f6f6; /* Цвет нижней границы */
+
+  padding-bottom: 20px; /* Отступ снизу */
 }
 
 .header .container {
@@ -29,4 +30,22 @@
 
 .header__logo p {
   color: #7b7b7b;
+}
+
+.SocialFoodLabel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #ffffff; /* Цвет фона для контекста */
+  text-align: center; /* Выравнивание текста по центру */
+}
+
+.SocialFoodLabel h1 {
+  font-size: 36px; /* Размер шрифта для заголовка */
+  font-weight: bold; /* Жирное начертание */
+  color: #2d2d2d; /* Цвет текста */
+  letter-spacing: 2px; /* Расстояние между буквами */
+  text-transform: uppercase; /* Преобразование текста в верхний регистр */
+  margin: 0; /* Убираем отступы по умолчанию */
 }

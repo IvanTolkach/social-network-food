@@ -7,7 +7,12 @@ function RegistrationPage() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // Состояние для переключателя
   const navigate = useNavigate(); // Хук для навигации
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword); // Переключаем видимость пароля
+  };
 
   const saveData = async () => {
     const data = { username, email, password };
@@ -59,7 +64,7 @@ function RegistrationPage() {
 
         <label htmlFor="password">Пароль:</label>
         <input
-          type="password"
+          type={showPassword ? "text" : "password"} // Если showPassword true, показываем текст
           id="password"
           name="password"
           value={password}
@@ -67,36 +72,24 @@ function RegistrationPage() {
           required
         />
 
-        <button
-          type="submit"
-          style={{
-            marginTop: "10px",
-            padding: "10px 20px",
-            backgroundColor: "#28a745",
-            color: "#fff",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-          }}
-        >
-          Зарегистрироваться
-        </button>
+        {/* Переключатель для видимости пароля */}
+        <label htmlFor="showPassword">
+          <input
+            type="checkbox"
+            id="showPassword"
+            checked={showPassword}
+            onChange={togglePasswordVisibility}
+          />
+          Показать пароль
+        </label>
+
+        <button type="submit">Зарегистрироваться</button>
       </form>
 
       {/* Кнопка для перехода на страницу авторизации */}
       <button
         onClick={() => navigate("/login")} // Навигация на /login
         className="auth-button"
-        style={{
-          marginTop: "20px",
-          padding: "10px 20px",
-          fontSize: "16px",
-          backgroundColor: "#007BFF",
-          color: "#fff",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
       >
         Перейти к авторизации
       </button>

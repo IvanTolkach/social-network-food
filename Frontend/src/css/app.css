@@ -7,7 +7,7 @@ body {
 }
 
 .wrapper {
-  width: calc(100vw - 100px);
+  width: calc(50vw - 50px); /* Уменьшаем ширину в два раза */
   height: 100%;
   background-color: #fff;
   margin: 50px auto;
@@ -24,9 +24,15 @@ body {
 }
 
 .content__items {
+  padding-top: 20px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-wrap: wrap; /* Разрешаем перенос элементов на новую строку */
+  justify-content: center; /* Центрируем посты по горизонтали */
+}
+
+.content__items .post-block {
+  width: 100%; /* Каждый пост занимает всю ширину контейнера */
+  margin-bottom: 20px; /* Добавляем отступ между постами */
 }
 
 .content__top {

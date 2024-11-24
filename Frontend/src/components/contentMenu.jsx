@@ -8,7 +8,7 @@ function ContentMenu() {
           <li>Создать запись</li>
         </ul>
       </div>
-      <div className="sort">
+      {/*<div className="sort">
         <div className="sort__label">
           <svg
             width="10"
@@ -31,7 +31,7 @@ function ContentMenu() {
             <li>Дате</li>
           </ul>
         </div>
-      </div>
+      </div>*/}
     </div>
   );
 }

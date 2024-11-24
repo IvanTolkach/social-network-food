@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 //import { useNavigate } from "react-router-dom";
 import MainHeader from "../components/mainHeader";
-import ContentMenu from "../components/contetnMenu";
+import ContentMenu from "../components/contentMenu.jsx";
 import PostBlock from "../components/postBlock";
 import { Routes, Route, useLocation } from "react-router-dom";
 import RegistrationPage from "../pages/registration_page.jsx";
@@ -46,6 +46,7 @@ function MainPage() {
               <div className="container">
                 <ContentMenu />
                 <div className="content__items">
+                  <PostBlock />
                   <PostBlock />
                 </div>
               </div>

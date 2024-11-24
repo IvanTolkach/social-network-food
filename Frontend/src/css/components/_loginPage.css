@@ -1,13 +1,18 @@
 @import "../_variables.css";
 
-/* Контейнер для всей страницы */
-.registration-container {
+.login-container {
   max-width: 400px;
-  margin: 50px auto;
+  margin: 50px auto; /* Отступ сверху и снизу, для отделения от других элементов */
   padding: 20px;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 30px; /* Добавляем отступ сверху */
+}
+
+.wrapper {
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 h2 {
@@ -41,8 +46,8 @@ input:focus {
   border-color: #6c63ff;
 }
 
-/* Общие стили для кнопок на странице регистрации */
-.registration-container button {
+/* Общие стили для кнопок на странице авторизации */
+.login-container button {
   padding: 12px 30px; /* Определяем размер кнопок */
   color: #fff;
   border: none;
@@ -54,48 +59,40 @@ input:focus {
   margin-top: 10px; /* Отступ сверху */
 }
 
-/* Стиль кнопки Зарегистрироваться (синий) */
-.registration-container button[type="submit"] {
+/* Стиль кнопки Войти (синий) */
+.login-container button[type="submit"] {
   background-color: #007bff; /* Синий цвет */
 }
 
-.registration-container button[type="submit"]:hover {
+.login-container button[type="submit"]:hover {
   background-color: #0056b3; /* Более темный синий при наведении */
 }
 
-/* Стиль кнопки перехода к авторизации (зеленый) */
-.registration-container button.auth-button {
+/* Стиль кнопки перехода к регистрации (зеленый) */
+.login-container button.register-btn {
   background-color: #28a745; /* Зеленый цвет */
 }
 
-.registration-container button.auth-button:hover {
+.login-container button.register-btn:hover {
   background-color: #218838; /* Более темный зеленый при наведении */
 }
 
-/* Стили для сообщений об ошибках */
-.error-message {
-  color: red;
-  font-size: 12px;
-  margin-bottom: 15px;
-}
-
-/* Адаптивность */
 @media (max-width: 500px) {
-  .registration-container {
+  .login-container {
     width: 90%;
     margin: 20px auto;
   }
 }
 
-.registration-container label {
+.login-container label {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
-.registration-container input[type="password"],
-.registration-container input[type="text"],
-.registration-container input[type="email"],
-.registration-container input[type="username"] {
+.login-container input[type="password"],
+.login-container input[type="text"],
+.login-container input[type="email"],
+.login-container input[type="username"] {
   padding: 10px;
   width: 100%;
   margin-bottom: 15px;
@@ -103,11 +100,11 @@ input:focus {
   border: 1px solid #ccc;
 }
 
-.registration-container label[for="showPassword"] {
+.login-container label[for="showPassword"] {
   font-size: 17px; /* Увеличиваем размер текста на 2 единицы */
 }
 
-.registration-container input[type="checkbox"] {
+.login-container input[type="checkbox"] {
   margin-right: 10px;
   transform: scale(1.5); /* Увеличиваем размер чекбокса на 50% */
 }

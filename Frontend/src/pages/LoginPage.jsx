@@ -6,7 +6,12 @@ import Cookies from "js-cookie"; // Импортируем js-cookie
 function LoginPage() {
   const [identifier, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // Состояние для отображения пароля
   const navigate = useNavigate(); // Хук для навигации
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const login = async () => {
     const data = { identifier, password };
@@ -51,7 +56,7 @@ function LoginPage() {
 
         <label htmlFor="password">Пароль:</label>
         <input
-          type="password"
+          type={showPassword ? "text" : "password"} // Условие для отображения пароля
           id="password"
           name="password"
           value={password}
@@ -59,35 +64,24 @@ function LoginPage() {
           required
         />
 
-        <button
-          type="submit"
-          style={{
-            marginTop: "10px",
-            padding: "10px 20px",
-            backgroundColor: "#007BFF",
-            color: "#fff",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-          }}
-        >
-          Войти
-        </button>
+        {/* Переключатель для видимости пароля */}
+        <label htmlFor="showPassword">
+          <input
+            type="checkbox"
+            id="showPassword"
+            checked={showPassword}
+            onChange={togglePasswordVisibility}
+          />
+          Показать пароль
+        </label>
+
+        <button type="submit">Войти</button>
       </form>
 
       {/* Кнопка для перехода на страницу регистрации */}
       <button
+        className="register-btn"
         onClick={() => navigate("/registration_page")} // Навигация на /registration_page
-        style={{
-          marginTop: "20px",
-          padding: "10px 20px",
-          fontSize: "16px",
-          backgroundColor: "#28a745",
-          color: "#fff",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
       >
         Перейти к регистрации
       </button>
