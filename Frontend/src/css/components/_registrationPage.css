@@ -89,13 +89,15 @@ input:focus {
 
 .registration-container label {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  font-weight: bold; /* Делаем текст жирным */
+  font-size: 17px;
 }
 
-.registration-container input[type="password"],
-.registration-container input[type="text"],
-.registration-container input[type="email"],
-.registration-container input[type="username"] {
+.registration-container input[for="password"],
+.registration-container input[for="text"],
+.registration-container input[for="email"],
+.registration-container input[for="username"] {
   padding: 10px;
   width: 100%;
   margin-bottom: 15px;
@@ -110,4 +112,48 @@ input:focus {
 .registration-container input[type="checkbox"] {
   margin-right: 10px;
   transform: scale(1.5); /* Увеличиваем размер чекбокса на 50% */
+}
+
+/*Цвета для сложности пароля*/
+.password-container {
+  display: flex;
+  align-items: center;
+}
+
+.password-label {
+  margin-right: 0px;
+}
+
+.password-status {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.password-very-weak {
+  color: red;
+}
+
+.password-weak {
+  color: orange;
+}
+
+.password-medium {
+  color: blue;
+}
+
+.password-strong {
+  color: green;
+}
+
+.password-status-space {
+  margin-left: 5px; /* Отступ между словом "Пароль" и текстом */
+}
+
+/*Прогресс-бар*/
+.password-strength-bar {
+  transition:
+    width 0.3s ease,
+    background-color 0.3s ease;
 }

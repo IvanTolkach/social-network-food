@@ -14,11 +14,7 @@ function PostBlock() {
       <p className="post-text">
         Какой-то текст для поста, который может быть длинным и обрезаться.
       </p>
-      <img
-        className="post-image"
-        src="https://dodopizza-a.akamai.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
-        alt="Post"
-      />
+      <img className="post-image" src="" alt="Post" />
       <div className="post-actions">
         <button className="like-button">🤍 120</button> {/* Число лайков */}
         <button className="comment-button">💬 45</button>{" "}

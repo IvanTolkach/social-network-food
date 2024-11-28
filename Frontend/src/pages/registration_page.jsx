@@ -1,33 +1,50 @@
-import React, { useState } from "react"; // Импортируем React и useState
+import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // Импортируем useNavigate для маршрутизации
-import Cookies from "js-cookie"; // Импортируем js-cookie
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 function RegistrationPage() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false); // Состояние для переключателя
-  const navigate = useNavigate(); // Хук для навигации
+  const [passwordStrength, setPasswordStrength] = useState(0);
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword); // Переключаем видимость пароля
+    setShowPassword(!showPassword);
+  };
+
+  const evaluatePasswordStrength = (password) => {
+    let strength = 0;
+    if (password.length >= 6) strength += 25;
+    if (/[A-ZА-Я]/.test(password)) strength += 25;
+    if (/[0-9]/.test(password)) strength += 25;
+    if (/[@$!%*?&#]/.test(password)) strength += 25;
+    return strength;
+  };
+
+  const handlePasswordChange = (e) => {
+    const newPassword = e.target.value;
+    setPassword(newPassword);
+    const strength = evaluatePasswordStrength(newPassword);
+    setPasswordStrength(strength);
   };
 
   const saveData = async () => {
+    if (passwordStrength < 75) {
+      alert("Пароль должен быть достаточно сильным.");
+      return;
+    }
+
     const data = { username, email, password };
 
     try {
-      // URL локального бекенда
-      console.log(data); // Вывод данных перед отправкой
-      const response = await axios.post("http://localhost:8080/register", data); // Замените на правильный порт
-      console.log("Ответ от сервера:", response.data);
+      const response = await axios.post("http://localhost:8080/register", data);
       alert("Регистрация успешна!");
-
-      // Сохранение токена авторизации в cookie
-      Cookies.set("authToken", response.data.token, { expires: 7 }); // Токен хранится 7
+      Cookies.set("authToken", response.data.token, { expires: 7 });
     } catch (error) {
-      console.error("Ошибка при отправке данных:", error);
+      console.error("Ошибка при отправке данных:", error, data);
       alert("Произошла ошибка. Попробуйте снова.");
     }
   };
@@ -38,8 +55,8 @@ function RegistrationPage() {
       <form
         id="registrationForm"
         onSubmit={(e) => {
-          e.preventDefault(); // Останавливаем стандартное поведение формы
-          saveData(); // Сохраняем данные
+          e.preventDefault();
+          saveData();
         }}
       >
         <label htmlFor="username">Логин:</label>
@@ -62,17 +79,94 @@ function RegistrationPage() {
           required
         />
 
-        <label htmlFor="password">Пароль:</label>
+        <div className="password-container">
+          <label htmlFor="password" className="password-label">
+            Пароль:
+          </label>
+          <span className="password-status-space"></span>
+
+          <div
+            className={`password-status 
+    ${
+      passwordStrength === 25
+        ? "password-very-weak"
+        : passwordStrength === 50
+          ? "password-weak"
+          : passwordStrength === 75
+            ? "password-medium"
+            : "password-strong"
+    }`}
+          >
+            {password && (
+              <>
+                {passwordStrength < 25
+                  ? ""
+                  : passwordStrength === 25
+                    ? "Очень слабый"
+                    : passwordStrength === 50
+                      ? "Слабый"
+                      : passwordStrength === 75
+                        ? "Средний"
+                        : "Сильный"}
+              </>
+            )}
+          </div>
+
+          <div
+            className="password-strength-bar"
+            style={{
+              marginLeft: "auto", // прижимаем к правому краю
+              marginRight: "0",
+              marginBottom: "5px",
+              width: "150px",
+              height: "8px",
+              borderRadius: "4px",
+              backgroundColor: "#e0e0e0",
+              position: "relative",
+              overflow: "hidden",
+            }}
+          >
+            <div
+              style={{
+                width: `${passwordStrength}%`,
+                height: "100%",
+                backgroundColor:
+                  passwordStrength < 26
+                    ? "#ff4d4d" // красный
+                    : passwordStrength < 51
+                      ? "#ffc107" // жёлтый
+                      : passwordStrength < 76
+                        ? "#2196F3" // синий
+                        : "#28a745", // зелёный
+                transition: "width 0.3s ease, background-color 0.3s ease",
+              }}
+            ></div>
+
+            {/* Деления шкалы для разных уровней сложности */}
+            {[0, 25, 50, 75].map((div, index) => (
+              <div
+                key={index}
+                style={{
+                  position: "absolute",
+                  left: `${div}%`,
+                  top: "0",
+                  bottom: "0",
+                  width: "1px",
+                  backgroundColor: "#ccc",
+                }}
+              ></div>
+            ))}
+          </div>
+        </div>
         <input
-          type={showPassword ? "text" : "password"} // Если showPassword true, показываем текст
+          type={showPassword ? "text" : "password"}
           id="password"
           name="password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={handlePasswordChange}
           required
         />
 
-        {/* Переключатель для видимости пароля */}
         <label htmlFor="showPassword">
           <input
             type="checkbox"
@@ -83,14 +177,12 @@ function RegistrationPage() {
           Показать пароль
         </label>
 
-        <button type="submit">Зарегистрироваться</button>
+        <button type="submit" disabled={passwordStrength < 75}>
+          Зарегистрироваться
+        </button>
       </form>
 
-      {/* Кнопка для перехода на страницу авторизации */}
-      <button
-        onClick={() => navigate("/login")} // Навигация на /login
-        className="auth-button"
-      >
+      <button onClick={() => navigate("/login")} className="auth-button">
         Перейти к авторизации
       </button>
     </div>
