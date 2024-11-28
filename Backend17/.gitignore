@@ -37,6 +37,3 @@ build/
 logs/
 *.log
 application.log
-
-### Pictures ###
-src/main/resources/static/uploads/
