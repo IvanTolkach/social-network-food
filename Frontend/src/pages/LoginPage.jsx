@@ -1,10 +1,9 @@
-import React, { useState } from "react"; // Импортируем React и useState
+import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // Импортируем useNavigate для маршрутизации
-import Cookies from "js-cookie"; // Импортируем js-cookie
+import { useNavigate } from "react-router-dom";
 
-function LoginPage() {
-  const [identifier, setEmail] = useState("");
+function LoginPage({ onLogin }) {
+  const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false); // Состояние для отображения пароля
   const navigate = useNavigate(); // Хук для навигации
@@ -14,20 +13,25 @@ function LoginPage() {
   };
 
   const login = async () => {
-    const data = { identifier, password };
-    console.log(data);
     try {
-      // URL локального бекенда
-      console.log(data); // Вывод данных перед отправкой
-      const response = await axios.post("http://localhost:8080/login", data); // Замените на правильный порт
-      console.log("Ответ от сервера:", response.data);
-      alert("Авторизация успешна!");
+      const response = await axios.post(
+        "http://localhost:8080/login",
+        {
+          identifier,
+          password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
 
-      // Сохранение токена авторизации в cookie
-      Cookies.set("authToken", response.data.token, { expires: 7 }); // Токен хранится 7 дней
-
-      // Пример: перенаправление на главную страницу после успешной авторизации
-      navigate("../");
+      // Если авторизация успешна, вызываем onLogin с состоянием авторизации
+      if (response.status === 200) {
+        onLogin(true); // Пользователь авторизован, устанавливаем состояние в true
+        navigate("/"); // Перенаправляем на главную страницу
+      } else {
+        alert("Не удалось авторизоваться. Попробуйте снова.");
+      }
     } catch (error) {
       console.error("Ошибка при авторизации:", error);
       alert("Неверные данные. Попробуйте снова.");
@@ -46,11 +50,11 @@ function LoginPage() {
       >
         <label htmlFor="identifier">Почта:</label>
         <input
-          type="identifier"
+          type="email"
           id="identifier"
           name="identifier"
           value={identifier}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => setIdentifier(e.target.value)}
           required
         />
 

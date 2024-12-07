@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
+//import Cookies from "js-cookie";
 
 function RegistrationPage() {
   const [username, setUsername] = useState("");
@@ -40,9 +40,15 @@ function RegistrationPage() {
     const data = { username, email, password };
 
     try {
-      const response = await axios.post("http://localhost:8080/register", data);
+      await axios.post("http://localhost:8080/register", data, {
+        headers: {
+          "Access-Control-Allow-Origin": "http://localhost:3000", // Разрешение для CORS
+          "Access-Control-Allow-Credentials": "true", // Разрешение для отправки cookies
+        },
+        withCredentials: true, // Разрешаем отправку cookies
+      });
       alert("Регистрация успешна!");
-      Cookies.set("authToken", response.data.token, { expires: 7 });
+      navigate("../login");
     } catch (error) {
       console.error("Ошибка при отправке данных:", error, data);
       alert("Произошла ошибка. Попробуйте снова.");
