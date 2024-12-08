@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-//import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next"; // Импортируем useTranslation для работы с локализацией
 
 function RegistrationPage() {
   const [username, setUsername] = useState("");
@@ -10,6 +10,7 @@ function RegistrationPage() {
   const [passwordStrength, setPasswordStrength] = useState(0);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const { t } = useTranslation(); // Используем t для доступа к локализованным строкам
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -33,7 +34,7 @@ function RegistrationPage() {
 
   const saveData = async () => {
     if (passwordStrength < 75) {
-      alert("Пароль должен быть достаточно сильным.");
+      alert(t("passwordTooWeak"));
       return;
     }
 
@@ -47,17 +48,17 @@ function RegistrationPage() {
         },
         withCredentials: true, // Разрешаем отправку cookies
       });
-      alert("Регистрация успешна!");
+      alert(t("registrationSuccess"));
       navigate("../login");
     } catch (error) {
       console.error("Ошибка при отправке данных:", error, data);
-      alert("Произошла ошибка. Попробуйте снова.");
+      alert(t("errorOccurred"));
     }
   };
 
   return (
     <div className="registration-container">
-      <h2>Регистрация</h2>
+      <h2>{t("registration")}</h2>
       <form
         id="registrationForm"
         onSubmit={(e) => {
@@ -65,7 +66,7 @@ function RegistrationPage() {
           saveData();
         }}
       >
-        <label htmlFor="username">Логин:</label>
+        <label htmlFor="username">{t("login")}:</label>
         <input
           type="text"
           id="username"
@@ -75,7 +76,7 @@ function RegistrationPage() {
           required
         />
 
-        <label htmlFor="email">Почта:</label>
+        <label htmlFor="email">{t("email")}:</label>
         <input
           type="email"
           id="email"
@@ -87,33 +88,33 @@ function RegistrationPage() {
 
         <div className="password-container">
           <label htmlFor="password" className="password-label">
-            Пароль:
+            {t("password")}:
           </label>
           <span className="password-status-space"></span>
 
           <div
             className={`password-status 
-    ${
-      passwordStrength === 25
-        ? "password-very-weak"
-        : passwordStrength === 50
-          ? "password-weak"
-          : passwordStrength === 75
-            ? "password-medium"
-            : "password-strong"
-    }`}
+            ${
+              passwordStrength === 25
+                ? "password-very-weak"
+                : passwordStrength === 50
+                  ? "password-weak"
+                  : passwordStrength === 75
+                    ? "password-medium"
+                    : "password-strong"
+            }`}
           >
             {password && (
               <>
                 {passwordStrength < 25
                   ? ""
                   : passwordStrength === 25
-                    ? "Очень слабый"
+                    ? t("veryWeak")
                     : passwordStrength === 50
-                      ? "Слабый"
+                      ? t("weak")
                       : passwordStrength === 75
-                        ? "Средний"
-                        : "Сильный"}
+                        ? t("medium")
+                        : t("strong")}
               </>
             )}
           </div>
@@ -121,7 +122,7 @@ function RegistrationPage() {
           <div
             className="password-strength-bar"
             style={{
-              marginLeft: "auto", // прижимаем к правому краю
+              marginLeft: "auto",
               marginRight: "0",
               marginBottom: "5px",
               width: "150px",
@@ -138,17 +139,16 @@ function RegistrationPage() {
                 height: "100%",
                 backgroundColor:
                   passwordStrength < 26
-                    ? "#ff4d4d" // красный
+                    ? "#ff4d4d"
                     : passwordStrength < 51
-                      ? "#ffc107" // жёлтый
+                      ? "#ffc107"
                       : passwordStrength < 76
-                        ? "#2196F3" // синий
-                        : "#28a745", // зелёный
+                        ? "#2196F3"
+                        : "#28a745",
                 transition: "width 0.3s ease, background-color 0.3s ease",
               }}
             ></div>
 
-            {/* Деления шкалы для разных уровней сложности */}
             {[0, 25, 50, 75].map((div, index) => (
               <div
                 key={index}
@@ -164,6 +164,7 @@ function RegistrationPage() {
             ))}
           </div>
         </div>
+
         <input
           type={showPassword ? "text" : "password"}
           id="password"
@@ -180,16 +181,16 @@ function RegistrationPage() {
             checked={showPassword}
             onChange={togglePasswordVisibility}
           />
-          Показать пароль
+          {t("showPassword")}
         </label>
 
         <button type="submit" disabled={passwordStrength < 75}>
-          Зарегистрироваться
+          {t("register")}
         </button>
       </form>
 
       <button onClick={() => navigate("/login")} className="auth-button">
-        Перейти к авторизации
+        {t("goToLogin")}
       </button>
     </div>
   );

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next"; // Импортируем хук для перевода
 
 function LoginPage({ onLogin }) {
+  const { t } = useTranslation(); // Получаем функцию перевода
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false); // Состояние для отображения пароля
@@ -30,17 +32,17 @@ function LoginPage({ onLogin }) {
         onLogin(true); // Пользователь авторизован, устанавливаем состояние в true
         navigate("/"); // Перенаправляем на главную страницу
       } else {
-        alert("Не удалось авторизоваться. Попробуйте снова.");
+        alert(t("Login failed. Please try again.")); // Локализованный текст
       }
     } catch (error) {
       console.error("Ошибка при авторизации:", error);
-      alert("Неверные данные. Попробуйте снова.");
+      alert(t("Invalid credentials. Please try again.")); // Локализованный текст
     }
   };
 
   return (
     <div className="login-container">
-      <h2>Авторизация</h2>
+      <h2>{t("LoginCont")}</h2> {/* Локализованный текст */}
       <form
         id="loginForm"
         onSubmit={(e) => {
@@ -48,7 +50,8 @@ function LoginPage({ onLogin }) {
           login(); // Отправляем данные для авторизации
         }}
       >
-        <label htmlFor="identifier">Почта:</label>
+        <label htmlFor="identifier">{t("Email:")}</label>{" "}
+        {/* Локализованный текст */}
         <input
           type="email"
           id="identifier"
@@ -57,8 +60,8 @@ function LoginPage({ onLogin }) {
           onChange={(e) => setIdentifier(e.target.value)}
           required
         />
-
-        <label htmlFor="password">Пароль:</label>
+        <label htmlFor="password">{t("Password:")}</label>{" "}
+        {/* Локализованный текст */}
         <input
           type={showPassword ? "text" : "password"} // Условие для отображения пароля
           id="password"
@@ -67,7 +70,6 @@ function LoginPage({ onLogin }) {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-
         {/* Переключатель для видимости пароля */}
         <label htmlFor="showPassword">
           <input
@@ -76,18 +78,17 @@ function LoginPage({ onLogin }) {
             checked={showPassword}
             onChange={togglePasswordVisibility}
           />
-          Показать пароль
+          {t("Show password")} {/* Локализованный текст */}
         </label>
-
-        <button type="submit">Войти</button>
+        <button type="submit">{t("LoginCont")}</button>{" "}
+        {/* Локализованный текст */}
       </form>
-
       {/* Кнопка для перехода на страницу регистрации */}
       <button
         className="register-btn"
         onClick={() => navigate("/registration_page")} // Навигация на /registration_page
       >
-        Перейти к регистрации
+        {t("Go to registration")} {/* Локализованный текст */}
       </button>
     </div>
   );

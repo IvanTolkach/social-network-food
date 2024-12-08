@@ -7,8 +7,10 @@ import PostBlock from "../components/postBlock";
 import RegistrationPage from "../pages/registration_page.jsx";
 import LoginPage from "../pages/LoginPage.jsx";
 import "../css/app.css";
+import { useTranslation } from "react-i18next"; // Импортируем хук для перевода
 
 function MainPage() {
+  const { t } = useTranslation(); // Получаем функцию перевода
   const currentLocation = useLocation();
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Булевое состояние для авторизации
   const [posts, setPosts] = useState([]); // Посты, отображаемые на странице
@@ -128,7 +130,7 @@ function MainPage() {
                       />
                     ))
                   ) : (
-                    <p>Посты не найдены.</p>
+                    <p>{t("Posts not found.")}</p> // Локализованный текст
                   )}
                 </div>
               </div>

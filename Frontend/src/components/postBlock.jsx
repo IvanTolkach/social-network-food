@@ -1,12 +1,17 @@
-import React, { useState, useEffect } from "react"; // Импортируем React
+import React, { useState, useEffect } from "react";
 import "../css/app.css";
 import axios from "axios";
+import { useTranslation } from "react-i18next"; // Импортируем хук для перевода
 
 function PostBlock({ post }) {
   const [likesCount, setLikesCount] = useState(post.likesCount); // Состояние для лайков
   const [isLiked, setIsLiked] = useState(false); // Состояние для отслеживания лайка
   const [username, setUsername] = useState("Аноним"); // Состояние для имени пользователя
   const [currentUserId, setCurrentUserId] = useState(null); // ID текущего пользователя
+  const [comments, setComments] = useState([]); // Состояние для хранения комментариев
+  const [isCommentModalOpen, setIsCommentModalOpen] = useState(false); // Состояние для управления модальным окном комментариев
+  const [newComment, setNewComment] = useState(""); // Состояние для нового комментария
+  const { t } = useTranslation(); // Получаем функцию перевода
 
   // Загружаем имя пользователя и его ID
   useEffect(() => {
@@ -29,6 +34,73 @@ function PostBlock({ post }) {
 
     fetchCurrentUser();
   }, []);
+
+  const loadComments = async () => {
+    try {
+      // Загружаем все пользователей
+      const usersResponse = await axios.get("http://localhost:8080/all", {
+        headers: {
+          "Access-Control-Allow-Origin": "http://localhost:3000",
+          "Access-Control-Allow-Credentials": "true",
+        },
+        withCredentials: true,
+      });
+      const users = usersResponse.data; // Массив всех пользователей
+
+      // Теперь загружаем комментарии
+      setComments(post.comments);
+
+      // Для каждого комментария находим имя пользователя
+      const commentsWithUsernames = post.comments.map((comment) => {
+        const user = users.find((u) => u.id === comment.userId); // Ищем пользователя по userId
+        return {
+          ...comment,
+          username: user ? user.username : "Неизвестный пользователь", // Добавляем имя пользователя
+        };
+      });
+
+      // Обновляем состояние с комментариями с именами пользователей
+      setComments(commentsWithUsernames);
+    } catch (error) {
+      console.error(
+        "Ошибка при загрузке комментариев или пользователей:",
+        error
+      );
+    }
+  };
+
+  // Обработчик открытия модального окна
+  const handleOpenCommentModal = () => {
+    loadComments();
+    setIsCommentModalOpen(true);
+  };
+
+  // Обработчик закрытия модального окна
+  const handleCloseCommentModal = () => {
+    setIsCommentModalOpen(false);
+  };
+
+  // Обработчик отправки нового комментария
+  const handleCommentSubmit = async () => {
+    if (newComment.trim() === "") return; // Не отправлять пустой комментарий
+    try {
+      await axios.post(
+        `http://localhost:8080/posts/${post.id}/comment`,
+        { description: newComment },
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "http://localhost:3000", // Разрешение для CORS
+            "Access-Control-Allow-Credentials": "true", // Разрешение для отправки cookies
+          },
+          withCredentials: true, // Разрешаем отправку cookies
+        }
+      );
+      setNewComment(""); // Очищаем поле ввода
+      loadComments(); // Перезагружаем комментарии
+    } catch (error) {
+      console.error("Ошибка при отправке комментария:", error);
+    }
+  };
 
   // Проверка, если текущий пользователь лайкнул пост
   useEffect(() => {
@@ -100,18 +172,16 @@ function PostBlock({ post }) {
         <img
           className="user-avatar"
           src={post.avatar || "https://example.com/default-avatar.jpg"} // Аватар пользователя
-          alt={post.author || "Автор"}
+          alt={post.author || t("author")}
         />
-        <h4>{username || "Аноним"}</h4> {/* Имя пользователя */}
+        <h4>{username || t("Anonymous")}</h4> {/* Имя пользователя */}
       </div>
-      <p className="post-text">
-        {post.description || "Нет текста для отображения."}
-      </p>
+      <p className="post-text">{post.description || t("No text available.")}</p>
       {post.image && (
         <img
           className="post-image"
           src={`http://localhost:8080/uploads/${post.image}`}
-          alt="Post"
+          alt={t("Post")}
         />
       )}
       <div className="post-actions">
@@ -122,13 +192,46 @@ function PostBlock({ post }) {
         >
           {isLiked ? "❤️" : "🤍"} {likesCount || 0}
         </button>
-        {/* Число комментариев */}
-        <button className="comment-button">💬 {post.commentsCount || 0}</button>
+        {/* Кнопка комментариев */}
+        <button className="comment-button" onClick={handleOpenCommentModal}>
+          💬 {post.commentsCount || 0}
+        </button>
         {/* Опциональная кнопка для рецепта, если он есть */}
         {post.ingredients && post.ingredients.length > 0 && (
-          <button className="recipe-button">📝 Рецепт</button>
+          <button className="recipe-button">📝 {t("Recipe")}</button>
         )}
       </div>
+
+      {/* Модальное окно комментариев */}
+      {isCommentModalOpen && (
+        <div className="comment-modal">
+          <div className="modal-content">
+            <button className="close-modal" onClick={handleCloseCommentModal}>
+              X
+            </button>
+            <h3>{t("Comments")}</h3>
+            <div className="comments-list">
+              {comments.length === 0 ? (
+                <p>{t("No comments")}</p>
+              ) : (
+                comments.map((comment) => (
+                  <div key={comment.id} className="comment">
+                    <p>
+                      <strong>{comment.username}</strong>: {comment.description}
+                    </p>
+                  </div>
+                ))
+              )}
+            </div>
+            <textarea
+              value={newComment}
+              onChange={(e) => setNewComment(e.target.value)}
+              placeholder={t("Write a comment...")}
+            ></textarea>
+            <button onClick={handleCommentSubmit}>{t("Submit")}</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
