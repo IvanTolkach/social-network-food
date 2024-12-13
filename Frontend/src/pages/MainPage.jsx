@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import MainHeader from "../components/mainHeader";
 import ContentMenu from "../components/contentMenu.jsx";
 import PostBlock from "../components/postBlock";
@@ -11,45 +11,38 @@ import { useTranslation } from "react-i18next"; // Импортируем хук
 
 function MainPage() {
   const { t } = useTranslation(); // Получаем функцию перевода
+  const navigate = useNavigate(); // Навигация для изменения страницы
   const currentLocation = useLocation();
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Булевое состояние для авторизации
   const [posts, setPosts] = useState([]); // Посты, отображаемые на странице
 
   useEffect(() => {
-    // Проверка наличия токена в куки
-    const token = document.cookie
-      .split(";")
-      .find((cookie) => cookie.trim().startsWith("token="));
-    console.log(token);
-    if (token) {
-      // Токен найден, проверим его валидность на сервере
-      validateToken(token.split("=")[1]);
-    }
-  }, []);
-
-  const validateToken = async (token) => {
-    try {
-      // Запрос на сервер для проверки токена
-      const response = await axios.post(
-        "http://localhost:8080/auth/validate_token",
-        {},
-        {
+    // Проверяем текущего пользователя при загрузке страницы
+    const checkCurrentUser = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/current", {
           headers: {
-            Authorization: `Bearer ${token}`,
             "Access-Control-Allow-Origin": "http://localhost:3000", // Разрешение для CORS
             "Access-Control-Allow-Credentials": "true", // Разрешение для отправки cookies
           },
           withCredentials: true, // Разрешаем отправку cookies
-        }
-      );
+        });
 
-      if (response.data.isValid) {
-        setIsAuthenticated(true); // Токен валиден, авторизуем пользователя
+        if (response.status === 200) {
+          setIsAuthenticated(true); // Пользователь авторизован
+          navigate("/"); // Перенаправляем на главную страницу для авторизованных
+        }
+      } catch (error) {
+        console.error(
+          "Пользователь не авторизован или произошла ошибка:",
+          error
+        );
+        setIsAuthenticated(false); // Убеждаемся, что состояние авторизации сброшено
       }
-    } catch (error) {
-      console.error("Ошибка при проверке токена:", error);
-    }
-  };
+    };
+
+    checkCurrentUser();
+  }, [navigate]);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -98,6 +91,9 @@ function MainPage() {
   const handleLogout = () => {
     setIsAuthenticated(false); // Меняем состояние на false, чтобы выйти
     setPosts([]); // Очищаем посты при выходе
+    axios.head("http://localhost:8080/logout", {
+      withCredentials: true, // Разрешаем отправку cookies
+    });
   };
 
   return (
