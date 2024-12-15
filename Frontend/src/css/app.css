@@ -35,12 +35,6 @@ body {
   margin-bottom: 20px; /* Добавляем отступ между постами */
 }
 
-.content__top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 .container {
   width: 90%;
   margin: 0 auto;
@@ -120,12 +114,14 @@ body {
   display: flex;
   align-items: center;
   margin-right: 15px;
-  width: 10%;
+  width: 100%; /* Убедитесь, что контейнер занимает всю доступную ширину */
 }
 
 .cart__item-img img {
-  width: 80px;
-  height: 80px;
+  width: 100%; /* Изображение растягивается на всю ширину контейнера */
+  height: auto; /* Поддерживаем пропорции изображения */
+  object-fit: cover; /* Растягиваем изображение, чтобы заполнить контейнер */
+  display: block;
 }
 
 .cart__item-info {

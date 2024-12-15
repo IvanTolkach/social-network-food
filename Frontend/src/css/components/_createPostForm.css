@@ -1,0 +1,73 @@
+/* Стили для формы создания поста */
+.create-post-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.create-post-form h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.create-post-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.create-post-form input[type="text"],
+.create-post-form textarea,
+.create-post-form input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 18px;
+}
+
+.create-post-form textarea {
+  resize: vertical;
+  min-height: 150px; /* Увеличиваем высоту поля "Текст" */
+}
+
+#create-post-form-textarea {
+  min-height: 200px; /* Задаем конкретную высоту для поля "Текст" */
+}
+
+#create-post-form-ingredients {
+  min-height: 80px; /* Задаем меньшую высоту для поля "Ингредиенты" */
+}
+
+.create-post-form button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.create-post-form button:hover {
+  background-color: #0056b3;
+}
+
+.create-post-form button:active {
+  background-color: #004080;
+}
+
+.create-post-form button:focus {
+  outline: none;
+}

@@ -5,16 +5,30 @@
 }
 
 .language-button {
-  background: none;
+  background: #007bff; /* Синий цвет фона кнопки */
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 5px 10px;
+  padding: 5px 15px; /* Увеличиваем внутренние отступы для более пропорционального размера */
   cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.2s;
-  background-color: orange;
+  font-size: 18px;
+  color: #fff; /* Белый цвет текста */
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    transform 0.2s; /* Добавляем плавный переход для цвета, фона и трансформации */
 }
 
 .language-button:hover {
-  background-color: chocolate;
+  background-color: #0056b3; /* Более тёмный синий цвет фона при наведении */
+  color: #fff; /* Белый цвет текста при наведении */
+  transform: translateY(
+    -2px
+  ); /* Добавляем небольшой эффект подъема при наведении */
+}
+
+.language-button:active {
+  background-color: #003f7f; /* Цвет фона при клике */
+  transform: translateY(
+    0
+  ); /* Возвращаем кнопку в исходное положение при клике */
 }
