@@ -56,7 +56,7 @@ function RegistrationPage() {
   const CurrentUserGoogle = () => {
     try {
       handleGoogleLogin();
-      axios.get("http://localhost:8080/current_new", {
+      axios.get("http://localhost:8080/currentGoogle", {
         headers: {
           "Access-Control-Allow-Origin": "http://localhost:3000",
           "Access-Control-Allow-Credentials": "true",
