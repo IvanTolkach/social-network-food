@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
+import "../i18n";
 
-function CreatePostForm(isAuthenticated) {
+function CreatePostForm() {
+  const { t } = useTranslation();
   const [title, setTitle] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [image, setImage] = useState(null);
@@ -12,21 +15,15 @@ function CreatePostForm(isAuthenticated) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!isAuthenticated) {
-      navigate("/login");
-      return;
-    }
-
     if (!title.trim() || !ingredients.trim()) {
-      alert("Заполните все поля!");
+      alert(t("Fill in all the fields!"));
       return;
     }
 
-    // Разделяем ингредиенты по пробелам или запятым и убираем лишние пробелы вокруг каждого элемента
     const ingredientsArray = ingredients
-      .split(/[\s,]+/) // Разделение по одному или нескольким пробелам или запятым
-      .map((ingredient) => ingredient.trim()) // Убираем пробелы вокруг каждого ингредиента
-      .filter((ingredient) => ingredient !== ""); // Убираем пустые строки, если они есть
+      .split(/[\s,]+/)
+      .map((ingredient) => ingredient.trim())
+      .filter((ingredient) => ingredient !== "");
 
     const formData = new FormData();
     formData.append("description", title);
@@ -40,16 +37,16 @@ function CreatePostForm(isAuthenticated) {
       setIsLoading(true);
       await axios.post("http://localhost:8080/posts", formData, {
         headers: {
-          "Access-Control-Allow-Origin": "http://localhost:3000", // Разрешение для CORS
-          "Access-Control-Allow-Credentials": "true", // Разрешение для отправки cookies
+          "Access-Control-Allow-Origin": "http://localhost:3000",
+          "Access-Control-Allow-Credentials": "true",
         },
-        withCredentials: true, // Разрешаем отправку cookies
+        withCredentials: true,
       });
 
       navigate("/");
     } catch (error) {
-      console.error("Ошибка при создании поста:", error);
-      alert("Произошла ошибка при создании поста. Попробуйте ещё раз.");
+      console.error(t("Error creating post:"), error);
+      alert(t("An error occurred while creating the post. Please try again."));
     } finally {
       setIsLoading(false);
     }
@@ -58,7 +55,7 @@ function CreatePostForm(isAuthenticated) {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file && file.size > 2 * 1024 * 1024) {
-      alert("Размер файла не должен превышать 2 МБ.");
+      alert(t("File size must not exceed 2 MB."));
       return;
     }
     setImage(file);
@@ -66,9 +63,9 @@ function CreatePostForm(isAuthenticated) {
 
   return (
     <form onSubmit={handleSubmit} className="create-post-form">
-      <h2>Создать пост</h2>
+      <h2>{t("Create a post")}</h2>
       <div>
-        <label htmlFor="title">Текст:</label>
+        <label htmlFor="title">{t("Text:")}</label>
         <textarea
           id="title"
           value={title}
@@ -78,7 +75,9 @@ function CreatePostForm(isAuthenticated) {
         />
       </div>
       <div>
-        <label htmlFor="ingredients">Ингредиенты (разделяйте запятыми):</label>
+        <label htmlFor="ingredients">
+          {t("Ingredients (separate with commas):")}
+        </label>
         <textarea
           id="ingredients"
           value={ingredients}
@@ -88,7 +87,7 @@ function CreatePostForm(isAuthenticated) {
         />
       </div>
       <div>
-        <label htmlFor="image">Изображение:</label>
+        <label htmlFor="image">{t("Image:")}</label>
         <input
           type="file"
           id="image"
@@ -97,7 +96,7 @@ function CreatePostForm(isAuthenticated) {
         />
       </div>
       <button type="submit" disabled={isLoading}>
-        {isLoading ? "Создание..." : "Создать"}
+        {isLoading ? t("Creating...") : t("Create")}
       </button>
     </form>
   );

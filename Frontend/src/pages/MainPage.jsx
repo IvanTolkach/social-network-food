@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import MainHeader from "../components/mainHeader";
 import ContentMenu from "../components/contentMenu.jsx";
 import PostBlock from "../components/postBlock";
@@ -11,70 +11,62 @@ import { useTranslation } from "react-i18next"; // Импортируем хук
 import CreatePostForm from "../components/CreatePostForm"; // Импортируем компонент формы создания поста
 function MainPage() {
   const { t } = useTranslation(); // Получаем функцию перевода
-  const navigate = useNavigate(); // Навигация для изменения страницы
+  //const navigate = useNavigate(); // Навигация для изменения страницы
   const currentLocation = useLocation();
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Булевое состояние для авторизации
   const [posts, setPosts] = useState([]); // Посты, отображаемые на странице
   const [activeTab, setActiveTab] = useState("best"); // Храним активную вкладку
 
   useEffect(() => {
-    // Проверяем текущего пользователя только если вкладка "Мои посты" или "Создать пост"
     const checkCurrentUser = async () => {
-      if (activeTab === "best") {
-        // Если вкладка "Лучшие посты", не проверяем пользователя
-        fetchBestPosts(); // Загружаем лучшие посты без проверки авторизации
-        return;
-      }
-
       try {
         const response = await axios.get("http://localhost:8080/current", {
           headers: {
-            "Access-Control-Allow-Origin": "http://localhost:3000", // Разрешение для CORS
-            "Access-Control-Allow-Credentials": "true", // Разрешение для отправки cookies
+            "Access-Control-Allow-Origin": "http://localhost:3000",
+            "Access-Control-Allow-Credentials": "true",
           },
-          withCredentials: true, // Разрешаем отправку cookies
+          withCredentials: true,
         });
-
-        if (response.status === 200) {
-          setIsAuthenticated(true); // Пользователь авторизован
-          fetchUserPosts(); // Загружаем посты пользователя
+        if (response?.status === 209) {
+          setIsAuthenticated(false);
+          fetchBestPosts(); // Загружаем лучшие посты для неавторизованного пользователя
+          return;
         }
+        setIsAuthenticated(true);
+        fetchUserPosts(); // Загружаем посты пользователя, если авторизован
       } catch (error) {
-        console.error(
-          "Пользователь не авторизован или произошла ошибка:",
-          error
-        );
-        setIsAuthenticated(false); // Убеждаемся, что состояние авторизации сброшено
-        if (activeTab !== "best") {
-          navigate("/login"); // Перенаправляем на страницу авторизации, если вкладка не "Лучшие посты"
-        }
+        console.error(error);
+        setIsAuthenticated(false);
+        fetchBestPosts(); // Загружаем лучшие посты, если ошибка авторизации
       }
     };
 
-    // Поменяли условие, чтобы не проверять текущего пользователя, если вкладка "Лучшие посты"
-    if (activeTab !== "best") {
-      checkCurrentUser();
+    checkCurrentUser(); // Вызываем функцию внутри useEffect
+  }, []); // Добавляем activeTab как зависимость
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      fetchBestPosts(); // Загружаем лучшие посты
     } else {
       fetchBestPosts(); // Загружаем лучшие посты
     }
-  }, [navigate, activeTab]); // Добавляем activeTab в зависимости
+  }, [isAuthenticated]); // Срабатывает при изменении isAuthenticated
 
   // Загрузка постов пользователя
   const fetchUserPosts = async () => {
-    //console.log("Fetching user posts");
     try {
-      setPosts([]); // Очищаем посты перед загрузкой новых
+      setPosts([]);
       const response = await axios.get(
         "http://localhost:8080/posts/our_posts",
         {
           headers: {
-            "Access-Control-Allow-Origin": "http://localhost:3000", // Разрешение для CORS
-            "Access-Control-Allow-Credentials": "true", // Разрешение для отправки cookies
+            "Access-Control-Allow-Origin": "http://localhost:3000",
+            "Access-Control-Allow-Credentials": "true",
           },
-          withCredentials: true, // Разрешаем отправку cookies
+          withCredentials: true,
         }
       );
-      setPosts(response.data); // Устанавливаем полученные посты
+      setPosts(response.data);
     } catch (error) {
       console.error("Ошибка при загрузке постов пользователя:", error);
     }

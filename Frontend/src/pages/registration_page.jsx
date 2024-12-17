@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next"; // Импортируем useTranslation для работы с локализацией
+import { useTranslation } from "react-i18next";
 
 function RegistrationPage() {
   const [username, setUsername] = useState("");
@@ -10,7 +10,7 @@ function RegistrationPage() {
   const [passwordStrength, setPasswordStrength] = useState(0);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-  const { t } = useTranslation(); // Используем t для доступа к локализованным строкам
+  const { t } = useTranslation();
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -37,22 +37,42 @@ function RegistrationPage() {
       alert(t("passwordTooWeak"));
       return;
     }
-
     const data = { username, email, password };
-
     try {
       await axios.post("http://localhost:8080/register", data, {
         headers: {
-          "Access-Control-Allow-Origin": "http://localhost:3000", // Разрешение для CORS
-          "Access-Control-Allow-Credentials": "true", // Разрешение для отправки cookies
+          "Access-Control-Allow-Origin": "http://localhost:3000",
+          "Access-Control-Allow-Credentials": "true",
         },
-        withCredentials: true, // Разрешаем отправку cookies
+        withCredentials: true,
       });
       alert(t("registrationSuccess"));
       navigate("../login");
     } catch (error) {
       console.error("Ошибка при отправке данных:", error, data);
       alert(t("errorOccurred"));
+    }
+  };
+  const CurrentUserGoogle = () => {
+    try {
+      handleGoogleLogin();
+      axios.get("http://localhost:8080/current_new", {
+        headers: {
+          "Access-Control-Allow-Origin": "http://localhost:3000",
+          "Access-Control-Allow-Credentials": "true",
+        },
+        withCredentials: true,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleGoogleLogin = () => {
+    try {
+      window.location.href = "http://localhost:8080/login";
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -75,7 +95,6 @@ function RegistrationPage() {
           onChange={(e) => setUsername(e.target.value)}
           required
         />
-
         <label htmlFor="email">{t("email")}:</label>
         <input
           type="email"
@@ -85,16 +104,13 @@ function RegistrationPage() {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-
         <div className="password-container">
           <label htmlFor="password" className="password-label">
             {t("password")}:
           </label>
           <span className="password-status-space"></span>
-
           <div
-            className={`password-status 
-            ${
+            className={`password-status ${
               passwordStrength === 25
                 ? "password-very-weak"
                 : passwordStrength === 50
@@ -104,21 +120,17 @@ function RegistrationPage() {
                     : "password-strong"
             }`}
           >
-            {password && (
-              <>
-                {passwordStrength < 25
-                  ? ""
-                  : passwordStrength === 25
-                    ? t("veryWeak")
-                    : passwordStrength === 50
-                      ? t("weak")
-                      : passwordStrength === 75
-                        ? t("medium")
-                        : t("strong")}
-              </>
-            )}
+            {password &&
+              (passwordStrength < 25
+                ? ""
+                : passwordStrength === 25
+                  ? t("veryWeak")
+                  : passwordStrength === 50
+                    ? t("weak")
+                    : passwordStrength === 75
+                      ? t("medium")
+                      : t("strong"))}
           </div>
-
           <div
             className="password-strength-bar"
             style={{
@@ -148,7 +160,6 @@ function RegistrationPage() {
                 transition: "width 0.3s ease, background-color 0.3s ease",
               }}
             ></div>
-
             {[0, 25, 50, 75].map((div, index) => (
               <div
                 key={index}
@@ -164,7 +175,6 @@ function RegistrationPage() {
             ))}
           </div>
         </div>
-
         <input
           type={showPassword ? "text" : "password"}
           id="password"
@@ -173,7 +183,6 @@ function RegistrationPage() {
           onChange={handlePasswordChange}
           required
         />
-
         <label htmlFor="showPassword">
           <input
             type="checkbox"
@@ -183,14 +192,15 @@ function RegistrationPage() {
           />
           {t("showPassword")}
         </label>
-
         <button type="submit" disabled={passwordStrength < 75}>
           {t("register")}
         </button>
       </form>
-
       <button onClick={() => navigate("/login")} className="auth-button">
         {t("goToLogin")}
+      </button>
+      <button onClick={CurrentUserGoogle} className="google-auth-button">
+        {t("registerWithGoogle")}
       </button>
     </div>
   );

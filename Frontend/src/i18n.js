@@ -36,6 +36,25 @@ const resources = {
       weak: "Weak",
       medium: "Medium",
       strong: "Strong",
+      "Create a post": "Create a post",
+      "Text:": "Text:",
+      "Ingredients (separate with commas):":
+        "Ingredients (separate with commas):",
+      "Image:": "Image:",
+      "Creating...": "Creating...",
+      Create: "Create",
+      "Fill in all the fields!": "Fill in all the fields!",
+      "File size must not exceed 2 MB.": "File size must not exceed 2 MB.",
+      "Error creating post:": "Error creating post:",
+      "An error occurred while creating the post. Please try again.":
+        "An error occurred while creating the post. Please try again.",
+      registerWithGoogle: "Register with Google",
+      loginWithGoogle: "Login with Google",
+      Recipe: "Recipe",
+      Comments: "Comments",
+      Nocomments: "No comments",
+      WriteAcomment: "Write a comment...",
+      Ingredients: "Ingredients",
     },
   },
   ru: {
@@ -73,6 +92,26 @@ const resources = {
       weak: "Слабый",
       medium: "Средний",
       strong: "Сильный",
+      "Create a post": "Создать пост",
+      "Text:": "Текст:",
+      "Ingredients (separate with commas):":
+        "Ингредиенты (разделяйте запятыми):",
+      "Image:": "Изображение:",
+      "Creating...": "Создание...",
+      Create: "Создать",
+      "Fill in all the fields!": "Заполните все поля!",
+      "File size must not exceed 2 MB.":
+        "Размер файла не должен превышать 2 МБ.",
+      "Error creating post:": "Ошибка при создании поста:",
+      "An error occurred while creating the post. Please try again.":
+        "Произошла ошибка при создании поста. Попробуйте ещё раз.",
+      registerWithGoogle: "Регистрация через Google",
+      loginWithGoogle: "Авторизация через Google",
+      Recipe: "Рецепт",
+      Comments: "Комментарии",
+      Nocomments: "Нет комментариев",
+      WriteAcomment: "Напишите комментарий...",
+      Ingredients: "Ингредиенты",
     },
   },
   by: {
@@ -110,15 +149,35 @@ const resources = {
       weak: "Слабы",
       medium: "Сярэдні",
       strong: "Моцны",
+      "Create a post": "Стварыць запіс",
+      "Text:": "Тэкст:",
+      "Ingredients (separate with commas):":
+        "Інгрэдыенты (раздзяляйце коскамі):",
+      "Image:": "Выява:",
+      "Creating...": "Стварэнне...",
+      Create: "Стварыць",
+      "Fill in all the fields!": "Запоўніце ўсе палі!",
+      "File size must not exceed 2 MB.":
+        "Памер файла не павінен перавышаць 2 МБ.",
+      "Error creating post:": "Памылка пры стварэнні запісу:",
+      "An error occurred while creating the post. Please try again.":
+        "Адбылася памылка пры стварэнні запісу. Паспрабуйце яшчэ раз.",
+      registerWithGoogle: "Рэгістрацыя праз Google",
+      loginWithGoogle: "Аўтарызацыя праз Google",
+      Recipe: "Рэцэпт",
+      Comments: "Каментарыі",
+      Nocomments: "Няма каментары",
+      WriteAcomment: "Напішыце каментар...",
+      Ingredients: "Інгрэдыенты",
     },
   },
 };
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: "ru", // Устанавливаем русский язык по умолчанию
+  lng: "ru", // Default language
   interpolation: {
-    escapeValue: false, // React автоматически экранирует HTML
+    escapeValue: false, // React already escapes HTML
   },
 });
 

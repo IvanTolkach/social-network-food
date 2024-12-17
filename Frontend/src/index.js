@@ -8,13 +8,9 @@ import i18n from "./i18n"; // импортируем i18n конфигураци
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <I18nextProvider i18n={i18n}>
-    <React.StrictMode>
-      <BrowserRouter>
-        {" "}
-        {/* Это единственный Router, который нам нужен */}
-        <App />
-      </BrowserRouter>
-    </React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </I18nextProvider>
 );
 

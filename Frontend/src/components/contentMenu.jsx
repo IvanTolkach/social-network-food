@@ -47,19 +47,19 @@ function ContentMenu({
             className={activeTab === "best" ? "active" : ""}
             onClick={() => handleTabClick("best", onFetchBestPosts)} // При нажатии вызываем fetchBestPosts
           >
-            {t("Best Posts")} {/* Перевод текста */}
+            {t("Best Posts")}
           </li>
           <li
             className={activeTab === "user" ? "active" : ""}
             onClick={handleMyPostsClick} // Проверяем авторизацию перед загрузкой постов пользователя
           >
-            {t("My Posts")} {/* Перевод текста */}
+            {t("My Posts")}
           </li>
           <li
             className={activeTab === "create" ? "active" : ""}
             onClick={handleCreatePostClick} // Проверяем авторизацию перед созданием поста
           >
-            {t("Create Post")} {/* Перевод текста */}
+            {t("Create Post")}
           </li>
         </ul>
       </div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import SocialFoodLogo from "../img/Logo.png";
-import "../i18n"; // Убедитесь, что путь правильный
+import "../i18n";
 import axios from "axios";
 import DefaultAvatar from "../img/DefaultAvatar.webp";
 
@@ -14,7 +14,6 @@ function MainHeader({ isAuthenticated, onLogout }) {
   });
   const [isEditing, setIsEditing] = useState(false);
   const [newUsername, setNewUsername] = useState("");
-  const [newAvatar, setNewAvatar] = useState(null);
 
   const changeLanguage = (language) => {
     i18n.changeLanguage(language);
@@ -36,7 +35,7 @@ function MainHeader({ isAuthenticated, onLogout }) {
             avatar: response.data.avatar || DefaultAvatar,
             id: response.data.id,
           });
-          console.log(response.data.username, response.data.id);
+          //console.log(response.data.username, response.data.id);
         })
         .catch((error) => {
           console.error("Ошибка при получении данных пользователя:", error);
@@ -45,26 +44,29 @@ function MainHeader({ isAuthenticated, onLogout }) {
   }, [isAuthenticated]);
 
   const handleSave = () => {
-    // Отправляем обновленные данные пользователя на сервер
+    if (!user.id) {
+      console.error(
+        "ID пользователя не найден. Обновление профиля невозможно."
+      );
+      return;
+    }
+
     const formData = new FormData();
     formData.append("username", newUsername || user.username);
-    if (newAvatar) {
-      formData.append("avatar", newAvatar);
-    }
 
     axios
       .put(`http://localhost:8080/user/${user.id}`, formData, {
         headers: {
-          "Access-Control-Allow-Origin": "http://localhost:3000", // Разрешение для CORS
-          "Access-Control-Allow-Credentials": "true", // Разрешение для отправки cookies
+          "Access-Control-Allow-Origin": "http://localhost:3000",
+          "Access-Control-Allow-Credentials": "true",
         },
-        withCredentials: true, // Обязательно для передачи cookie
+        withCredentials: true,
       })
       .then(() => {
-        setUser({
-          username: newUsername || user.username,
-          avatar: newAvatar ? URL.createObjectURL(newAvatar) : user.avatar,
-        });
+        setUser((prevUser) => ({
+          ...prevUser,
+          username: newUsername || prevUser.username,
+        }));
         setIsEditing(false);
       })
       .catch((error) => {
@@ -88,8 +90,6 @@ function MainHeader({ isAuthenticated, onLogout }) {
                 src={DefaultAvatar}
                 alt="User Avatar"
                 className="user-avatar"
-                onClick={() => setIsEditing(true)}
-                style={{ cursor: "pointer" }}
               />
               <span
                 className="user-name"
@@ -144,14 +144,6 @@ function MainHeader({ isAuthenticated, onLogout }) {
                 type="text"
                 defaultValue={user.username}
                 onChange={(e) => setNewUsername(e.target.value)}
-              />
-            </label>
-            <label>
-              {t("Avatar")}:{" "}
-              <input
-                type="file"
-                accept="image/*"
-                onChange={(e) => setNewAvatar(e.target.files[0])}
               />
             </label>
             <div className="modal-buttons">

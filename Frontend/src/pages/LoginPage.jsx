@@ -40,6 +40,29 @@ function LoginPage({ onLogin }) {
     }
   };
 
+  const CurrentUserGoogle = () => {
+    try {
+      handleGoogleLogin();
+      axios.get("http://localhost:8080/current_new", {
+        headers: {
+          "Access-Control-Allow-Origin": "http://localhost:3000",
+          "Access-Control-Allow-Credentials": "true",
+        },
+        withCredentials: true,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleGoogleLogin = () => {
+    try {
+      window.location.href = "http://localhost:8080/login";
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="login-container">
       <h2>{t("LoginCont")}</h2> {/* Локализованный текст */}
@@ -89,6 +112,9 @@ function LoginPage({ onLogin }) {
         onClick={() => navigate("/registration_page")} // Навигация на /registration_page
       >
         {t("Go to registration")} {/* Локализованный текст */}
+      </button>
+      <button onClick={CurrentUserGoogle} className="google-auth-button">
+        {t("loginWithGoogle")}
       </button>
     </div>
   );
