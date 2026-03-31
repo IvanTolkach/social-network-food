@@ -1,0 +1,112 @@
+@import "../_variables.css";
+
+.login-container {
+  max-width: 400px;
+  margin: 50px auto; /* Отступ сверху и снизу, для отделения от других элементов */
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 30px; /* Добавляем отступ сверху */
+}
+
+.wrapper {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+
+input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 18px;
+  outline: none;
+}
+
+input:focus {
+  border-color: #6c63ff;
+}
+
+/* Общие стили для кнопок на странице авторизации */
+.login-container button {
+  padding: 12px 30px; /* Определяем размер кнопок */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%; /* Кнопки будут растягиваться на всю доступную ширину */
+  margin-top: 10px; /* Отступ сверху */
+}
+
+/* Стиль кнопки Войти (синий) */
+.login-container button[type="submit"] {
+  background-color: #007bff; /* Синий цвет */
+}
+
+.login-container button[type="submit"]:hover {
+  background-color: #0056b3; /* Более темный синий при наведении */
+}
+
+/* Стиль кнопки перехода к регистрации (зеленый) */
+.login-container button.register-btn {
+  background-color: #28a745; /* Зеленый цвет */
+}
+
+.login-container button.register-btn:hover {
+  background-color: #218838; /* Более темный зеленый при наведении */
+}
+
+@media (max-width: 500px) {
+  .login-container {
+    width: 90%;
+    margin: 20px auto;
+  }
+}
+
+.login-container label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold; /* Делаем текст жирным */
+  font-size: 18px;
+}
+
+.login-container input[type="password"],
+.login-container input[type="text"],
+.login-container input[type="email"],
+.login-container input[type="username"] {
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.login-container label[for="showPassword"] {
+  font-size: 18px;
+}
+
+.login-container input[type="checkbox"] {
+  margin-right: 10px;
+  transform: scale(1.5); /* Увеличиваем размер чекбокса на 50% */
+}

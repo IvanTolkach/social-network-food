@@ -1,0 +1,76 @@
+/* Стили для поста */
+.post-block {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: auto;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.post-header h4 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.post-text {
+  font-size: 18px;
+  color: #333;
+  margin: 10px 0;
+  line-height: 1.4;
+}
+
+/* Стили для изображения поста */
+.post-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.like-button,
+.comment-button,
+.recipe-button {
+  font-size: 18px;
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.like-button:hover,
+.comment-button:hover,
+.recipe-button:hover {
+  color: #0056b3;
+}
+
+.like-button:focus,
+.comment-button:focus,
+.recipe-button:focus {
+  outline: none;
+}

@@ -1,0 +1,85 @@
+/* Стили для фона модального окна */
+.ingredients-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Стили для содержимого модального окна */
+.ingredients-modal-content {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  position: relative;
+  max-width: 500px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок модального окна */
+.ingredients-modal-content h3 {
+  margin-top: 0;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+/* Стили для списка ингредиентов */
+.ingredients-list {
+  list-style: none;
+  padding: 0;
+}
+
+.ingredients-list li {
+  font-size: 1.5em;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.ingredients-list li::before {
+  content: "-";
+  color: #2ecc71;
+  font-size: 2em;
+  margin-right: 10px;
+}
+
+/* Стили для кнопки закрытия */
+.close-ingredients-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  color: #333;
+  cursor: pointer;
+}
+
+.close-ingredients-modal:hover {
+  color: #e9dbda;
+}
+
+/* Анимация для модального окна */
+.ingredients-modal-content {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

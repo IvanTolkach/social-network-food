@@ -1,0 +1,27 @@
+services:
+  social-food_DB:
+    image: postgres:17
+    container_name: social-food_DB
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: social-food
+      PGPORT: 5433
+    expose:
+      - "5433"
+    ports:
+      - "5433:5433"
+
+  spring-service:
+    container_name: spring-service
+    hostname: spring-service
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    build:
+      context: ./Backend17
+
+    depends_on:
+      - social-food_DB
+
+    ports:
+      - "8080:8080"

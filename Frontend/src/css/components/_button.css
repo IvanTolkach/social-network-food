@@ -1,0 +1,141 @@
+@import "../_variables.css";
+@import "../libs/_normalize.css";
+
+.button {
+  display: inline-block;
+  background-color: #fe5f1e; /* Значение переменной $orange */
+  border-radius: 30px;
+  padding: 10px 20px;
+  min-width: 100px;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out; /* Значение переменной $duration */
+  border: 1px solid transparent;
+  user-select: none; /* Миксин noselect */
+  color: #fff;
+}
+
+.button span {
+  color: #fff;
+}
+
+.button i,
+.button span,
+.button path,
+.button svg {
+  transition: all 0.15s ease-in-out;
+}
+
+.button:hover {
+  background-color: #e6531a; /* darken($orange, 8%) */
+}
+
+.button:active {
+  background-color: #d94a17; /* darken($orange, 12%) */
+  transform: translateY(1px);
+}
+
+.button--circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  padding: 0;
+  border-width: 2px;
+}
+
+.button--black {
+  background-color: #232323; /* Значение переменной $black */
+}
+
+.button--black:hover,
+.button--black:active {
+  background-color: #383838; /* lighten($black, 10%) */
+}
+
+.button--outline {
+  background-color: #fff;
+  border-color: #fe5f1e; /* Значение переменной $orange */
+  color: #fe5f1e;
+}
+
+.button--outline span {
+  color: #fe5f1e;
+}
+
+.button--outline svg path {
+  fill: #fe5f1e;
+}
+
+.button--outline:hover {
+  background-color: #fe5f1e;
+  color: #fff;
+}
+
+.button--outline:hover span {
+  color: #fff;
+}
+
+.button--outline:hover svg path {
+  fill: #fff;
+}
+
+.button--outline:active {
+  background-color: #e6531a; /* darken($orange, 8%) */
+}
+
+.button__delimiter {
+  width: 1px;
+  height: 25px;
+  background-color: rgba(255, 255, 255, 0.25);
+  margin-left: 14px;
+  margin-right: 14px;
+}
+
+.button--cart {
+  display: flex;
+  align-items: center;
+  line-height: 23px;
+  padding: 8px 15px; /* Уменьшаем внутренние отступы */
+  font-size: 14px; /* Уменьшаем размер шрифта */
+  border-radius: 4px; /* Скругляем углы */
+  background-color: #007bff; /* Цвет фона */
+  color: #fff; /* Убедимся, что цвет текста установлен в белый */
+  text-transform: uppercase; /* Преобразование текста в верхний регистр */
+  transition: background-color 0.3s; /* Плавное изменение цвета фона */
+}
+
+.button--cart span {
+  color: #fff; /* Убедимся, что цвет текста установлен в белый */
+}
+
+.button--cart svg {
+  margin-right: 5px;
+}
+
+.button--cart span {
+  font-weight: 600;
+}
+
+.button--cart:hover {
+  background-color: #0056b3; /* Цвет фона при наведении */
+}
+
+.button--cart:focus,
+.button--cart:active {
+  color: #fff; /* Убедимся, что цвет текста остаётся белым при фокусе и нажатии */
+}
+
+.logout-button {
+  margin-left: auto; /* Автоматический отступ слева для прижатия кнопки к правому краю */
+  background-color: #f44336; /* Цвет фона для кнопки выхода */
+  color: white; /* Цвет текста для кнопки выхода */
+  margin-bottom: 5%;
+}
+.logout-button:hover {
+  background-color: #d32f2f; /* Цвет фона при наведении для кнопки выхода */
+}
